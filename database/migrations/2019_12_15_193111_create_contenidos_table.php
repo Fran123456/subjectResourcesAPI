@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTemariosTable extends Migration
+class CreateContenidosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,17 @@ class CreateTemariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('temarios', function (Blueprint $table) {
+        Schema::create('contenidos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('titulo');
             $table->text('descripcion')->nullable();
-            $table->unsignedBigInteger('unidad_id');
+            $table->string('pdf')->nullable();
+            $table->string('video')->nullable();
+            $table->unsignedBigInteger('temario_id');
             $table->timestamps();
 
             //relacion
-            $table->foreign('unidad_id')->references('id')->on('unidades');
+            $table->foreign('temario_id')->references('id')->on('temarios');
         });
     }
 
@@ -32,6 +34,6 @@ class CreateTemariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('temarios');
+        Schema::dropIfExists('contenidos');
     }
 }
