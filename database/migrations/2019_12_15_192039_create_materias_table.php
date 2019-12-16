@@ -15,6 +15,7 @@ class CreateMateriasTable extends Migration
     {
         Schema::create('materias', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('siglas');
             $table->string('titulo');
             $table->text('descripcion')->nullable();
             $table->timestamps();
