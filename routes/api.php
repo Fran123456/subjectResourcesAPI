@@ -16,3 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::resource('materias','MateriaController');
+Route::resource('unidades','UnidadController');
+Route::resource('unidades','TemarioController');
+
+Route::get('unidadesByMateria/{id}', 'UnidadController@unidadesByMateria')->name('unidadesByMateria');
+Route::get('temariosByUnidades/{id}', 'TemarioController@temariosByUnidades')->name('temariosByUnidades');
