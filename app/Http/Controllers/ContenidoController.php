@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Contenido;
 use App\Materia;
 use App\Unidad;
-Use App\Temario;
+use App\Temario;
 
-class TemarioController extends Controller
+class ContenidoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,19 +37,8 @@ class TemarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {     
-         $temarios = Temario::where('unidad_id', $request->unidad)->orderBy('orden', 'asc')->get();
-         $temarios = count($temarios) + 1;
-
-         $n = Temario::create(
-            [
-                'titulo' => $request->tema,
-                'descripcion' => $request->des,
-                'unidad_id' => $request->unidad,
-                'orden'=> $temarios
-            ]);
-
-        return back()->with('success', 'Tema creado correctamente');
+    {
+        //
     }
 
     /**
@@ -59,10 +49,9 @@ class TemarioController extends Controller
      */
     public function show($id)
     {
-        $temarios = Temario::where('unidad_id', $id)->orderBy('orden', 'asc')->get();
-        $unidad = Unidad::find($id);
-        $materia = Materia::find($unidad->materia_id);
-        return view('temario.temario_content', compact('temarios','unidad','materia'));
+        $contenidoVideo = Contenido::where('temario_id', $id)->where('video','!=', null)->get();
+        $contenidoPDF = Contenido::where('temario_id', $id)->where('pdf','!=', null)->get();
+        return view('contenido.contenido', compact('contenidoVideo','contenidoPDF'));
     }
 
     /**
@@ -97,10 +86,5 @@ class TemarioController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    //API
-    public function temariosByUnidades($id){
-      return Temario::where('unidad_id', $id)->get();
     }
 }

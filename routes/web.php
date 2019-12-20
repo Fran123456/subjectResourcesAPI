@@ -22,3 +22,4 @@ Route::get('/', 'HomeController@inicio_invitado')->name('inicio');
 Route::resource('materias','MateriaController');
 Route::resource('unidades','UnidadController');
 Route::resource('temarios','TemarioController');
+Route::resource('contenidos','ContenidoController');

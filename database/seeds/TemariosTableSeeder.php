@@ -13,7 +13,8 @@ class TemariosTableSeeder extends Seeder
     {
       DB::table('temarios')->insert([
        'titulo' => 'tema 1 MAT315',
-       'unidad_id' => 1,
+       'unidad_id' => 3,
+       'orden'=> 1,
       ]);
 
       DB::table('temarios')->insert([

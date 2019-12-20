@@ -10,12 +10,12 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <form method="post" action="{{ route('temarios.store') }}">
+    <form method="post" action="{{ route('materias.store') }}">
       @csrf
 
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Nueva tema</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Nueva materia</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -23,16 +23,15 @@
       <div class="modal-body">
         <div class="container">
           <div class="row">
-            
-            <label>Tema</label>
-            <input type="text" class="form-control" required="" name="tema">
+            <label>Siglas</label>
+            <input type="text" class="form-control" required="" name="siglas">
+            <br><br>
+            <label>Nombre de materia</label>
+            <input type="text" class="form-control" required="" name="materia">
 
             <br><br>
             <label>Descripción</label>
             <textarea class="form-control" name="des"></textarea>
-
-            <input type="hidden" value="{{$unidad->id}}" class="form-control" required="" name="unidad">
-
          </div>
         </div>
       </div>
@@ -65,17 +64,14 @@
 
     <div class="row justify-content-center">
         <div class="col-md-6">
-          <br>
-          <h3>Temario de: <strong>{{$unidad->titulo}}</strong></h3>
+           <br>
+           <h3>Materias</h3>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('materias.index') }}">Materias</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('materias.show', $materia->id) }}">{{$materia->titulo}}</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Temarios</li>
+              <li class="breadcrumb-item active" aria-current="page">Materias</li>
             </ol>
           </nav>
-          
         </div>
         <div class="col-md-6 text-right">
          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -85,34 +81,44 @@
         </div>
         <hr>
 
+
         <div class="col-md-12">
-          @if(count($temarios)>0)
+          @foreach ($contenidoVideo as $value)
+          <div class="col-md-4">
+            <div class="embed-responsive embed-responsive-4by3">
+              {!!$value->video!!}
+            </div>
+          </div>
+          
+            
+            
+          @endforeach
+          >
+        </div>
+
+        <div class="col-md-12">
             <table class="table">
               <thead class="thead-dark">
                 <tr>
-                  <th width="40" scope="col">#</th>
+                  <th scope="col">#</th>
                   <th scope="col">Materia</th>
                   <th scope="col">Descripción</th>
-                  <th scope="col">PDF</th>
-                  
+                  <th scope="col">Consultar</th>
+                  <th scope="col">Consultar</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach ($temarios as $key => $value)
+                @foreach ($contenidoPDF as $key => $value)
                 <tr>
                   <th scope="row">{{$key+1}}</th>
                   <td>{{$value->titulo}}</td>
                   <td>{{$value->descripcion}}</td>
-                  <td><a href="{{ route('contenidos.show', $value->id) }}" class="btn btn-info"><i class="far fa-eye"></i></a></td>
+                  <td>{{$value->pdf}}</td>
+                  <td><a href="{{ route('materias.show', $value->id) }}" class="btn btn-info"><i class="far fa-eye"></i></a></td>
                 </tr>
                 @endforeach
               </tbody>
             </table>
-            @else
-            <hr>
-              <h3>No hay contenido por el momento...</h3>
-            @endif
-            
         </div>
 
     </div>
