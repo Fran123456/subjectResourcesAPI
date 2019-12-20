@@ -8,6 +8,6 @@ class Temario extends Model
 {
     protected $table = 'temarios';
     protected $fillable = [
-        'id','titulo','descripcion','unidad_id'
+        'id','titulo','descripcion','unidad_id','orden',
     ];
 }

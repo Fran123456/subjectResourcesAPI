@@ -18,8 +18,8 @@ class CreateTemariosTable extends Migration
             $table->string('titulo');
             $table->text('descripcion')->nullable();
             $table->unsignedBigInteger('unidad_id');
+            $table->integer('orden')->nullable();
             $table->timestamps();
-
             //relacion
             $table->foreign('unidad_id')->references('id')->on('unidades');
         });
