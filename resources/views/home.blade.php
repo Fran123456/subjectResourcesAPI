@@ -22,7 +22,7 @@
         <div class="col-sm-4">
             <div class="card">
               <div class="card-body text-center">
-               <a href=""> <h5 class="card-title"><i class="fas fa-key fa-2x"></i> Keys</h5></a>
+               <a href="{{ route('keys.index') }}"> <h5 class="card-title"><i class="fas fa-key fa-2x"></i> Keys</h5></a>
               </div>
             </div>
         </div>

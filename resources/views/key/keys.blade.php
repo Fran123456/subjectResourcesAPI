@@ -10,12 +10,12 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <form method="post" action="{{ route('materias.store') }}">
+    <form method="post" action="{{ route('keys.store') }}">
       @csrf
 
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Nueva materia</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Nueva key</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -23,11 +23,11 @@
       <div class="modal-body">
         <div class="container">
           <div class="row">
-            <label>Siglas</label>
-            <input type="text" class="form-control" required="" name="siglas">
+            <label>Key generada</label>
+            <input type="text" class="form-control" required="" readonly="" value="{{$newKey}}" name="key">
             <br><br>
-            <label>Nombre de materia</label>
-            <input type="text" class="form-control" required="" name="materia">
+            <label>Anexo de key (opcional)</label>
+            <input type="text" class="form-control"  name="anexo">
 
             <br><br>
             <label>Descripción</label>
@@ -80,14 +80,15 @@
           </div>
       @endif
 
+
     <div class="row justify-content-center">
         <div class="col-md-8">
            <br>
-           <h3>Materias</h3>
+           <h3>Keys</h3>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Materias</li>
+              <li class="breadcrumb-item active" aria-current="page">Keys</li>
             </ol>
           </nav>
         </div>
@@ -100,12 +101,12 @@
         <hr>
 
         <div class="col-md-12">
-          @if(count($materias)>0)
             <table class="table">
+              @if(count($keys) >0)
               <thead class="thead-dark">
                 <tr>
                   <th width="40" scope="col">#</th>
-                  <th scope="col">Materia</th>
+                  <th scope="col">Key</th>
                   <th scope="col">Descripción</th>
                   <th width="40" scope="col">Consultar</th>
                   <th width="40" scope="col">Editar</th>
@@ -113,10 +114,10 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($materias as $key => $value)
+                @foreach ($keys as $key => $value)
                 <tr>
                   <th scope="row">{{$key+1}}</th>
-                  <td>{{$value->titulo}}</td>
+                  <td>{{$value->llave}}</td>
                   <td>{{$value->descripcion}}</td>
                   <td><a href="{{ route('materias.show', $value->id) }}" class="btn btn-info"><i class="far fa-eye"></i></a>
                   </td>
@@ -130,17 +131,13 @@
                     <input type="hidden" name="_method" value="delete" />
                     <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                   </form></td>
-
-                  
                 </tr>
                 @endforeach
               </tbody>
             </table>
-            {{$materias->render()}}
-
             @else
-          <hr>
-              <h3>No hay materias por el momento...</h3>
+             <hr>
+              <h3>No hay keys por el momento...</h3>
             @endif
         </div>
 
