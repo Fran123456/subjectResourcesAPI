@@ -18,6 +18,7 @@ class CreateUnidadesTable extends Migration
             $table->string('titulo');
             $table->text('descripcion')->nullable();
             $table->unsignedBigInteger('materia_id');
+            $table->integer('orden_u')->nullable();
             $table->timestamps();
             //relacion
             $table->foreign('materia_id')->references('id')->on('materias');

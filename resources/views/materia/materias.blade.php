@@ -62,8 +62,26 @@
           </div>
       @endif
 
+         @if(session('delete'))
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{Session('delete')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+      @endif
+
+       @if(session('edit'))
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{Session('edit')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+      @endif
+
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-8">
            <br>
            <h3>Materias</h3>
           <nav aria-label="breadcrumb">
@@ -73,7 +91,7 @@
             </ol>
           </nav>
         </div>
-        <div class="col-md-6 text-right">
+        <div class="col-md-4 text-right">
          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
           <i class="fas fa-plus"></i>
         </button>
@@ -85,10 +103,12 @@
             <table class="table">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col">#</th>
+                  <th width="40" scope="col">#</th>
                   <th scope="col">Materia</th>
                   <th scope="col">Descripción</th>
-                  <th scope="col">Consultar</th>
+                  <th width="40" scope="col">Consultar</th>
+                  <th width="40" scope="col">Editar</th>
+                  <th width="40" scope="col">Eliminar</th>
                 </tr>
               </thead>
               <tbody>
@@ -97,7 +117,20 @@
                   <th scope="row">{{$key+1}}</th>
                   <td>{{$value->titulo}}</td>
                   <td>{{$value->descripcion}}</td>
-                  <td><a href="{{ route('materias.show', $value->id) }}" class="btn btn-info"><i class="far fa-eye"></i></a></td>
+                  <td><a href="{{ route('materias.show', $value->id) }}" class="btn btn-info"><i class="far fa-eye"></i></a>
+                  </td>
+                  
+
+                  <td><a href="{{ route('materias.edit', $value->id) }}" class="btn btn-warning "><i class="far fa-edit"></i></a></td>
+
+
+                  <td><form method="POST" action="{{ route('materias.destroy', $value->id) }}">
+                    @csrf
+                    <input type="hidden" name="_method" value="delete" />
+                    <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                  </form></td>
+
+                  
                 </tr>
                 @endforeach
               </tbody>

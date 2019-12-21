@@ -63,8 +63,17 @@
           </div>
       @endif
 
+        @if(session('delete'))
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{Session('delete')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+      @endif
+
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-8">
           <br>
           <h3>Temario de: <strong>{{$unidad->titulo}}</strong></h3>
           <nav aria-label="breadcrumb">
@@ -77,7 +86,7 @@
           </nav>
           
         </div>
-        <div class="col-md-6 text-right">
+        <div class="col-md-4 text-right">
          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
           <i class="fas fa-plus"></i>
         </button>
@@ -91,10 +100,10 @@
               <thead class="thead-dark">
                 <tr>
                   <th width="40" scope="col">#</th>
-                  <th scope="col">Materia</th>
+                  <th scope="col">Tema</th>
                   <th scope="col">Descripción</th>
-                  <th scope="col">PDF</th>
-                  
+                  <th width="40" scope="col">Consultar</th>
+                  <th width="40" scope="col">Eliminar</th>
                 </tr>
               </thead>
               <tbody>
@@ -104,6 +113,14 @@
                   <td>{{$value->titulo}}</td>
                   <td>{{$value->descripcion}}</td>
                   <td><a href="{{ route('contenidos.show', $value->id) }}" class="btn btn-info"><i class="far fa-eye"></i></a></td>
+
+                  <td>
+                      <form method="POST" action="{{ route('temarios.destroy', $value->id) }}">
+                      @csrf
+                      <input type="hidden" name="_method" value="delete" />
+                      <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                    </form>  
+                  </td>
                 </tr>
                 @endforeach
               </tbody>

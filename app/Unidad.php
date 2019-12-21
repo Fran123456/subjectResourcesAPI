@@ -8,6 +8,6 @@ class Unidad extends Model
 {
   protected $table = 'unidades';
   protected $fillable = [
-      'id','titulo','descripcion','materia_id'
+      'id','titulo','descripcion','materia_id','orden_u'
   ];
 }

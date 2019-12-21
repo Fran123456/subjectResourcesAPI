@@ -96,7 +96,15 @@ class TemarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tema_delete = Temario::find($id);
+        Temario::destroy($id);
+        $temarios= Temario::where('unidad_id', $tema_delete->unidad_id)->get();
+
+        foreach ($temarios as $key => $value) {
+           Temario::where('id', $value->id)->update(['orden' => $key+1]);
+        }
+        
+        return back()->with('delete', 'Tema eliminado correctamente');
     }
 
     //API

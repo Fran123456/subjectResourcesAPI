@@ -38,7 +38,29 @@ class ContenidoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->op =="pdf"){
+            $file  = $request->file('file');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/pdf',$name);
+
+            $data = Contenido::create([
+              'titulo'=> $request->nombre,
+              'descripcion'=> $request->des,
+              'pdf'=> $name,
+              'temario_id' =>$request->temario,
+            ]);
+        }else{
+            $data = Contenido::create([
+              'titulo'=> $request->nombre,
+              'descripcion'=> $request->des,
+              'video'=> $request->embebido,
+              'url'=> $request->url,
+              'temario_id' =>$request->temario,
+            ]);
+        }
+        
+
+        return back()->with('success', 'Contenido agregado correctamente');
     }
 
     /**
@@ -48,10 +70,13 @@ class ContenidoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
+        $temario = Temario::find($id);
+        $unidad = Unidad::find($temario->unidad_id);
+        $materia = Materia::find($unidad->materia_id);
         $contenidoVideo = Contenido::where('temario_id', $id)->where('video','!=', null)->get();
         $contenidoPDF = Contenido::where('temario_id', $id)->where('pdf','!=', null)->get();
-        return view('contenido.contenido', compact('contenidoVideo','contenidoPDF'));
+        return view('contenido.contenido', compact('contenidoVideo','contenidoPDF','temario','unidad','materia'));
     }
 
     /**
@@ -62,7 +87,7 @@ class ContenidoController extends Controller
      */
     public function edit($id)
     {
-        //
+       
     }
 
     /**
@@ -84,7 +109,9 @@ class ContenidoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {    $temarioUnlink = Contenido::find($id);
+        Contenido::destroy($id);
+        //unlink(url('/').'/pdf/'.$temarioUnlink->pdf);
+        return back()->with('delete', 'Contenido eliminado correctamente');
     }
 }
