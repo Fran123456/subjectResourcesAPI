@@ -7,6 +7,7 @@ use App\Contenido;
 use App\Materia;
 use App\Unidad;
 use App\Temario;
+use App\Key;
 
 class ContenidoController extends Controller
 {
@@ -113,5 +114,18 @@ class ContenidoController extends Controller
         Contenido::destroy($id);
         //unlink(url('/').'/pdf/'.$temarioUnlink->pdf);
         return back()->with('delete', 'Contenido eliminado correctamente');
+    }
+
+
+    //API
+    public function contenidos($id, $key){
+    
+        $key = Key::where('llave', $key)->get();
+        if(count($key)>0){
+            return Contenido::where('temario_id', $id)->get();
+        }else{
+          return [];
+        }
+      
     }
 }

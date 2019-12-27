@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Materia;
 use App\Unidad;
 Use App\Temario;
-
+Use App\Key;
 class TemarioController extends Controller
 {
     /**
@@ -108,7 +108,14 @@ class TemarioController extends Controller
     }
 
     //API
-    public function temariosByUnidades($id){
-      return Temario::where('unidad_id', $id)->get();
+    public function temariosByUnidades($id, $key){
+    
+        $key = Key::where('llave', $key)->get();
+        if(count($key)>0){
+            return Temario::where('unidad_id', $id)->get();
+        }else{
+          return [];
+        }
+      
     }
 }

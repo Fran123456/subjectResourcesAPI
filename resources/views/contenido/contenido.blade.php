@@ -168,9 +168,16 @@
                 </tr>
               </thead>
               <tbody>
+                @php
+                  $n =0
+                @endphp
                 @foreach ($contenidoPDF as $key => $value)
+
+                @php
+                  $n++
+                @endphp
                 <tr>
-                  <th scope="row">{{$key+1}}</th>
+                  <th scope="row">{{$n}}</th>
                   <td>{{$value->titulo}}</td>
                   <td>{{$value->descripcion}}</td>
                   <td> <a target="_blank" href="{{url('/')}}/pdf/{{$value->pdf}}"><i class="far fa-file-pdf fa-2x"></i></a></td>
@@ -182,11 +189,16 @@
                     <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                   </form></td>
                 </tr>
+
                 @endforeach
 
-                @foreach ($contenidoVideo as $value)
+                @foreach ($contenidoVideo as $key=> $value)
+
+                @php
+                  $n++
+                @endphp
                 <tr>
-                  <th scope="row">{{$key+count($contenidoPDF)}}</th>
+                  <th scope="row">{{$n}}</th>
                   <td>{{$value->titulo}}</td>
                   <td>{{$value->descripcion}}</td>
                   <td><a target="_blank" href="{{$value->url}}"><i class="fab fa-youtube fa-2x"></i></a></td>

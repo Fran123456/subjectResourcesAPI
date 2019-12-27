@@ -19,5 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 
-Route::get('unidadesByMateria/{id}', 'UnidadController@unidadesByMateria')->name('unidadesByMateria');
-Route::get('temariosByUnidades/{id}', 'TemarioController@temariosByUnidades')->name('temariosByUnidades');
+Route::get('unidadesByMateria/{id}/{key}', 'UnidadController@unidadesByMateria')->name('unidadesByMateria');
+Route::get('temariosByUnidades/{id}/{key}', 'TemarioController@temariosByUnidades')->name('temariosByUnidades');
+Route::get('contenidos/{id}/{key}', 'ContenidoController@contenidos')->name('contenidos');

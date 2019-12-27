@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Materia;
 use App\Unidad;
 use App\Temario;
-
+use App\Key;
 class UnidadController extends Controller
 {
     /**
@@ -116,9 +116,17 @@ class UnidadController extends Controller
         return back()->with('delete', 'Unidad eliminada correctamente');
     }
     
+
+
     //API
     //obtiene las unidades de la materia $id
-    public function unidadesByMateria($id){
-      return Unidad::where('materia_id' , $id)->get();
+    public function unidadesByMateria($id, $key){
+
+        $key = Key::where('llave', $key)->get();
+        if(count($key)>0){
+            return Unidad::where('materia_id' , $id)->get();
+        }else{
+          return [];
+        }
     }
 }
