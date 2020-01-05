@@ -73,7 +73,8 @@
             <input type="text" class="form-control" required="" name="nombre">
             <br><br>
             <label>Codigo embebido</label>
-            <input type="text" class="form-control" required="" name="embebido">
+            <textarea  rows="5" required="" name="embebido" class="form-control"></textarea>
+
             <br><br>
             <label>Url directa</label>
             <input type="text" class="form-control" required="" name="url">
@@ -160,10 +161,9 @@
               <thead class="thead-dark">
                 <tr>
                   <th width="40"  scope="col">#</th>
-                  <th scope="col">Materia</th>
+                  <th width="300" scope="col">Materia</th>
                   <th scope="col">Descripción</th>
                   <th width="40" scope="col">contenido</th>
-                  <th width="40" scope="col">Consultar</th>
                   <th width="40" scope="col">Borrar</th>
                 </tr>
               </thead>
@@ -181,7 +181,7 @@
                   <td>{{$value->titulo}}</td>
                   <td>{{$value->descripcion}}</td>
                   <td> <a target="_blank" href="{{url('/')}}/pdf/{{$value->pdf}}"><i class="far fa-file-pdf fa-2x"></i></a></td>
-                  <td><a href="{{ route('materias.show', $value->id) }}" class="btn btn-info"><i class="far fa-eye"></i></a></td>
+                  
 
                   <td><form method="POST" action="{{ route('contenidos.destroy', $value->id) }}">
                     @csrf
@@ -202,7 +202,7 @@
                   <td>{{$value->titulo}}</td>
                   <td>{{$value->descripcion}}</td>
                   <td><a target="_blank" href="{{$value->url}}"><i class="fab fa-youtube fa-2x"></i></a></td>
-                  <td><a href="{{ route('materias.show', $value->id) }}" class="btn btn-info"><i class="far fa-eye"></i></a></td>
+                  
                   <td><form method="POST" action="{{ route('contenidos.destroy', $value->id) }}">
                     @csrf
                     <input type="hidden" name="_method" value="delete" />

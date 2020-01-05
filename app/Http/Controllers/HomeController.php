@@ -27,6 +27,7 @@ class HomeController extends Controller
     }
    
     public function inicio_invitado(){
-        return view('welcome');
+        $url = "https://api.apiuesfia.website/public/api";
+        return view('welcome', compact('url'));
     }
 }
