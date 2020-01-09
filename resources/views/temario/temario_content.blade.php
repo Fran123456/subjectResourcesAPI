@@ -81,7 +81,7 @@
               <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
               <li class="breadcrumb-item"><a href="{{ route('materias.index') }}">Materias</a></li>
               <li class="breadcrumb-item"><a href="{{ route('materias.show', $materia->id) }}">{{$materia->titulo}}</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Temarios</li>
+              <li class="breadcrumb-item active" aria-current="page">{{$unidad->titulo}}</li>
             </ol>
           </nav>
           
