@@ -81,8 +81,11 @@ class TemarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {  
+       $tema = Temario::find($id);
+       $unidad = Unidad::find($tema->unidad_id);
+       $unidades = Unidad::where('materia_id', $unidad->materia_id)->get();
+       return view('temario.temario_edit', compact('tema','unidad','unidades'));
     }
 
     /**
@@ -94,7 +97,16 @@ class TemarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Temario::where('id', $id)
+        ->update([
+            'titulo' => $request->tema,
+            'descripcion' => $request->des,
+            'unidad_id' =>$request->unidad,
+            'orden' =>$request->orden,
+
+          ]);
+    
+        return redirect()->route('temarios.show',$request->unidad)->with('edit', 'Materia editada correctamente');
     }
 
     /**

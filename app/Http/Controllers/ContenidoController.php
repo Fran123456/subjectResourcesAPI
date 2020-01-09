@@ -96,7 +96,10 @@ class ContenidoController extends Controller
      */
     public function edit($id)
     {
-       
+       $contenido = Contenido::find($id);
+       $tema = Temario::find($contenido->temario_id);
+       $temas = Temario::where('unidad_id', $tema->unidad_id)->get();
+       return view('contenido.contenido_edit', compact('contenido','tema','temas'));
     }
 
     /**
