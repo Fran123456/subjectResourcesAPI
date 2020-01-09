@@ -128,4 +128,31 @@ class ContenidoController extends Controller
         }
       
     }
+
+    public function vistas($id, $key){
+    
+        $key = Key::where('llave', $key)->get();
+        if(count($key)>0){
+            $aux[0] = Contenido::where('pdf', $id)->first();
+            if($aux[0] != null){
+                $valor  = $aux[0]->vistas + 1;
+                Contenido::where('pdf', $id)->update(['vistas' => $valor]);
+              
+            }else{
+                
+                 $id = "https://youtu.be/".$id;
+                // print_r($id);
+                 $aux[0] = Contenido::where('url', $id)->first();
+                 if($aux[0]  !=null ) {
+                     $valor  = $aux[0]->vistas + 1;
+                     Contenido::where('url', $id)->update(['vistas' => $valor]);
+                 }
+
+            }
+
+        }else{
+          
+        }
+      
+    }
 }

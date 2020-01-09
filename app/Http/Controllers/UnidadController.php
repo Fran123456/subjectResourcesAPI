@@ -124,7 +124,7 @@ class UnidadController extends Controller
 
         $key = Key::where('llave', $key)->get();
         if(count($key)>0){
-            return Unidad::where('materia_id' , $id)->get();
+            return Unidad::where('materia_id' , $id)->orderBy('orden_u', 'asc')->get();
         }else{
           return [];
         }

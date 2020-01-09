@@ -9,7 +9,7 @@ class Contenido extends Model
    protected $table = 'contenidos';
 
    protected $fillable = [
-       'id','titulo','descripcion','pdf','video','temario_id','url','vistas'
+       'id','titulo','descripcion','pdf','video','temario_id','url','vistas'  
    ];
 
 }

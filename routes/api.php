@@ -23,3 +23,5 @@ Route::get('getMaterias/{key}', 'MateriaController@obtener_materias')->name('get
 Route::get('unidadesByMateria/{id}/{key}', 'UnidadController@unidadesByMateria')->name('unidadesByMateria');
 Route::get('temariosByUnidades/{id}/{key}', 'TemarioController@temariosByUnidades')->name('temariosByUnidades');
 Route::get('contenidos/{id}/{key}', 'ContenidoController@contenidos')->name('contenidos');
+
+Route::get('vistas/{id}/{key}', 'ContenidoController@vistas')->name('vistas');
