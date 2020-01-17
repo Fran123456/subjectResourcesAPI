@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Contenido;
 use App\Materia;
 use App\Unidad;
 use App\Temario;
 use App\Key;
+use App\Help\Helping;
 
 class ContenidoController extends Controller
 {
@@ -47,10 +49,15 @@ class ContenidoController extends Controller
      */
     public function store(Request $request)
     {
+        $t = Temario::find($request->temario);
+        $u = Materia::find($t->unidad_id);
+        $materia = Materia::find($u->materia_id);
         if($request->op =="pdf"){
-            $file  = $request->file('file');
-            $name = time().$file->getClientOriginalName();
-            $file->move(public_path().'/pdf',$name);
+
+           // $file  = $request->file('file');
+           // $name = time().$file->getClientOriginalName();
+           //  $file->move(public_path().'/pdf',$name);
+            Helping::subir_Archivo($request, 'pdf/'.$materia->siglas, $materia->siglas.'/');
 
             $data = Contenido::create([
               'titulo'=> $request->nombre,
@@ -99,7 +106,10 @@ class ContenidoController extends Controller
        $contenido = Contenido::find($id);
        $tema = Temario::find($contenido->temario_id);
        $temas = Temario::where('unidad_id', $tema->unidad_id)->get();
-       return view('contenido.contenido_edit', compact('contenido','tema','temas'));
+       $unidad = Unidad::find($tema->unidad_id);
+
+       $materia = Materia::find($unidad->materia_id);
+       return view('contenido.contenido_edit', compact('contenido','tema','temas','materia'));
     }
 
     /**
@@ -111,11 +121,36 @@ class ContenidoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($request->oculto == "pdf"){
+            
+            if($request->file == null){
+              //no subiremos nada ni actualizaremos el archivo.
+                echo "no";
+            }else{
+              $contenido =  Contenido::find($id);
+              $materia = Materia::find($request->materia);
+              Storage::disk('public')->delete('pdf/'.$contenido->pdf);
+              $name =  Helping::subir_Archivo($request, 'pdf/'.$materia->siglas, $materia->siglas.'/');
+              Contenido::where('id', $id)
+              ->update([
+                    'titulo' => $request->tema,
+                    'descripcion' => $request->des,
+                    'pdf' =>$name,
+                    'vistas' => $contenido->vistas,
+                    'temario_id' => $request->temasxd
+                  ]);
+             //Storage::disk('public')->delete('folder_path/file_name.jpg');
+             // $da = Storage::disk('public')->makeDirectory('pdf/p1p');
+            }
+        }else{
+
+        }
+       
+       return redirect()->route('contenidos.show',$contenido->temario_id)->with('edit', 'Contenido editado correctamente');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resourcreqe from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -124,6 +159,8 @@ class ContenidoController extends Controller
     {    $temarioUnlink = Contenido::find($id);
         Contenido::destroy($id);
         //unlink(url('/').'/pdf/'.$temarioUnlink->pdf);
+
+        Storage::disk('public')->delete('pdf/'.$materia->siglas.'/'.$contenido->pdf);
         return back()->with('delete', 'Contenido eliminado correctamente');
     }
 
@@ -166,4 +203,6 @@ class ContenidoController extends Controller
         }
       
     }
+
+    
 }

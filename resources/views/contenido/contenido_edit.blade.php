@@ -28,7 +28,7 @@
         <div class="col-md-12">
           <center><h3><strong>Editar contenido:</strong></h3></center>
           <hr>
-          <form method="POST" action="{{ route('temarios.update', $tema->id) }}">
+          <form enctype="multipart/form-data" method="POST" action="{{ route('contenidos.update', $contenido->id) }}">
             @csrf
             <input type="hidden" name="_method" value="put" />
               
@@ -51,19 +51,21 @@
                    <label>Codigo embebido</label>
                    <textarea  rows="4" required=""  name="embebido" class="form-control">{{$contenido->video}}</textarea>
                 </div>
+                <input type="hidden" name="oculto"  value="youtube">
               @else
                <div class="form-group">
                   <br>
                   <label>Archivo PDF</label>
-                  <input type="file" class="form-control-file" required=""  name="file">
+                  <input type="file" class="form-control-file"   name="file">
+                  <input type="hidden" name="oculto"  value="pdf">
                 </div>
               @endif
 
-
+              <input type="hidden" name="materia" value="{{$materia->id}}">
 
                <div class="form-group" >
                  <label>Temas:</label>
-                 <select name="unidad" class="form-control">
+                 <select name="temasxd" class="form-control">
                    @foreach ($temas as $element)
                     @if ($element->id == $tema->id)
                       <option selected="" value="{{$element->id}}" >{{$element->titulo}}</option>

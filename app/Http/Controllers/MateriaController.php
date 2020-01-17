@@ -7,6 +7,7 @@ use App\Materia;
 use App\Unidad;
 use App\Temario;
 use App\Key;
+use Illuminate\Support\Facades\Storage;
 
 class MateriaController extends Controller
 {
@@ -52,8 +53,9 @@ class MateriaController extends Controller
                 'titulo' => $request->materia,
                 'descripcion' => $request->des,
             ]);
-
-        return back()->with('success', 'Materia creada correctamente');
+           $da = Storage::disk('public')->makeDirectory('pdf/'.$request->siglas);
+           
+      //  return back()->with('success', 'Materia creada correctamente');
     }
 
     /**
