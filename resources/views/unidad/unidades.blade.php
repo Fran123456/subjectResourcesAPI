@@ -96,7 +96,7 @@
            <hr>
         <div class="col-md-12">
             @if(count($unidades)>0)
-             <table class="table">
+             <table id="table" class="table">
               <thead class="thead-dark">
                 <tr>
                   <th width="50" scope="col">#</th>
@@ -136,4 +136,11 @@
 
     </div>
 </div>
+
+
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#table').DataTable();
+} );
+</script>
 @endsection

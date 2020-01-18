@@ -106,7 +106,7 @@
 
         <div class="col-md-12">
           @if(count($temarios)>0)
-            <table class="table">
+            <table id="table" class="table">
               <thead class="thead-dark">
                 <tr>
                   <th width="40" scope="col">#</th>
@@ -148,4 +148,12 @@
 
     </div>
 </div>
+
+
+
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#table').DataTable();
+} );
+</script>
 @endsection

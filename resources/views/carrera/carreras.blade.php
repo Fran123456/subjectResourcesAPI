@@ -3,7 +3,6 @@
 @section('content')
 
 
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -87,7 +86,7 @@
 
    <div class="col-md-12">
           @if(count($carreras)>0)
-            <table class="table">
+            <table id="table" class="table">
               <thead class="thead-dark">
                 <tr>
                   <th width="40" scope="col">#</th>
@@ -134,5 +133,13 @@
 
 
 </div>
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#table').DataTable();
+} );
+</script>
+
+
+
 
 @endsection
