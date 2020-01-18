@@ -11,9 +11,9 @@
            <h3>Tema: <strong>{{$tema->titulo}} </strong><br>Unidad <strong>{{$unidad->titulo}}</strong></h3>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('temarios.show', $tema->unidad_id) }}">Temas</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Editar tema: {{$unidad->tema}}</li>
+               <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{url()->previous()}}">Atras</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Editar</li>
             </ol>
           </nav>
         </div>

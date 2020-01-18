@@ -7,6 +7,7 @@ use App\Materia;
 use App\Unidad;
 use App\Temario;
 use App\Key;
+use App\Carrera;
 class UnidadController extends Controller
 {
     /**
@@ -64,7 +65,19 @@ class UnidadController extends Controller
      */
     public function show($id)
     {
-        return Unidad::find($id);
+        $materia  = Materia::find($id);
+        $unidades = Unidad::where('materia_id', $id)->orderBy('orden_u', 'asc')->get();
+        $carrera = Carrera::find($materia->carrera_id);
+        $temarios = array();
+        foreach ($unidades as $key => $value) {
+            $temarios[$key] = Temario::where('unidad_id', $value->id)->get();
+        }
+        return view('unidad.unidades', compact('materia','unidades','temarios','carrera'));
+
+        
+
+      //$materias= Materias::where('')
+     // return view('materia.materias', compact('materias'));
     }
 
     /**
@@ -77,6 +90,7 @@ class UnidadController extends Controller
     {
         $unidad = Unidad::find($id);
         $materia = Materia::find($unidad->materia_id);
+        
 
         $temarios =  Temario::where('unidad_id', $id)->orderBy('orden', 'asc')->get();
         return view('unidad.unidad_edit', compact('materia','unidad','temarios')); 
@@ -98,7 +112,7 @@ class UnidadController extends Controller
             'orden_u' => $request->orden,
           ]);
     
-        return redirect()->route('materias.show', $request->materiaid)->with('edit', 'Unidad editada correctamente');
+        return redirect()->route('unidades.show', $request->materiaid)->with('edit', 'Unidad editada correctamente');
     }
 
     /**

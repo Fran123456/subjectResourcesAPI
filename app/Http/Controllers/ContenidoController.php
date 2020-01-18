@@ -9,6 +9,7 @@ use App\Materia;
 use App\Unidad;
 use App\Temario;
 use App\Key;
+use App\Carrera;
 use App\Help\Helping;
 
 class ContenidoController extends Controller
@@ -50,14 +51,14 @@ class ContenidoController extends Controller
     public function store(Request $request)
     {
         $t = Temario::find($request->temario);
-        $u = Materia::find($t->unidad_id);
+        $u = Unidad::find($t->unidad_id);
         $materia = Materia::find($u->materia_id);
         if($request->op =="pdf"){
 
            // $file  = $request->file('file');
            // $name = time().$file->getClientOriginalName();
            //  $file->move(public_path().'/pdf',$name);
-            Helping::subir_Archivo($request, 'pdf/'.$materia->siglas, $materia->siglas.'/');
+           $name =  Helping::subir_Archivo($request, 'pdf/'.$materia->siglas, $materia->siglas.'/');
 
             $data = Contenido::create([
               'titulo'=> $request->nombre,
@@ -90,9 +91,10 @@ class ContenidoController extends Controller
         $temario = Temario::find($id);
         $unidad = Unidad::find($temario->unidad_id);
         $materia = Materia::find($unidad->materia_id);
+        $carrera = Carrera::find($materia->carrera_id);
         $contenidoVideo = Contenido::where('temario_id', $id)->where('video','!=', null)->get();
         $contenidoPDF = Contenido::where('temario_id', $id)->where('pdf','!=', null)->get();
-        return view('contenido.contenido', compact('contenidoVideo','contenidoPDF','temario','unidad','materia'));
+        return view('contenido.contenido', compact('contenidoVideo','contenidoPDF','temario','unidad','materia','carrera'));
     }
 
     /**
@@ -120,30 +122,39 @@ class ContenidoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   $contenido =  Contenido::find($id);
         if($request->oculto == "pdf"){
             
             if($request->file == null){
               //no subiremos nada ni actualizaremos el archivo.
-                echo "no";
+                Contenido::where('id', $id)
+                ->update([
+                    'titulo' => $request->tema,
+                    'descripcion' => $request->des,
+                    'temario_id' => $request->temasxd
+                ]);
             }else{
-              $contenido =  Contenido::find($id);
+              
               $materia = Materia::find($request->materia);
               Storage::disk('public')->delete('pdf/'.$contenido->pdf);
+
               $name =  Helping::subir_Archivo($request, 'pdf/'.$materia->siglas, $materia->siglas.'/');
               Contenido::where('id', $id)
               ->update([
                     'titulo' => $request->tema,
                     'descripcion' => $request->des,
                     'pdf' =>$name,
-                    'vistas' => $contenido->vistas,
                     'temario_id' => $request->temasxd
                   ]);
-             //Storage::disk('public')->delete('folder_path/file_name.jpg');
-             // $da = Storage::disk('public')->makeDirectory('pdf/p1p');
             }
         }else{
-
+             Contenido::where('id', $id)
+              ->update([
+                    'titulo' => $request->tema,
+                    'descripcion' => $request->des,
+                    'video' =>$request->embebido,
+                    'url' => $request->url
+                  ]);
         }
        
        return redirect()->route('contenidos.show',$contenido->temario_id)->with('edit', 'Contenido editado correctamente');
@@ -156,11 +167,15 @@ class ContenidoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {    $temarioUnlink = Contenido::find($id);
+    {   $contenidoUnlink = Contenido::find($id);
+        $t = Temario::find($contenidoUnlink->temario_id);
+        $u = Unidad::find($t->unidad_id);
+        $m = Unidad::find($u->materia_id);
+       // $materia = Materia::find($u->materia_id);
         Contenido::destroy($id);
-        //unlink(url('/').'/pdf/'.$temarioUnlink->pdf);
+      
 
-        Storage::disk('public')->delete('pdf/'.$materia->siglas.'/'.$contenido->pdf);
+        Storage::disk('public')->delete('pdf/'.$m->siglas.'/'.$contenidoUnlink->pdf);
         return back()->with('delete', 'Contenido eliminado correctamente');
     }
 

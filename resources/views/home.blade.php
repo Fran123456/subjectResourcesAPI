@@ -6,7 +6,7 @@
         <div class="col-sm-4">
             <div class="card">
               <div class="card-body text-center">
-               <a href="{{ route('materias.index') }}"> <h5 class="card-title"><i class="fas fa-book fa-2x"></i> Materias</h5></a>
+               <a href="{{ route('carreras.index') }}"> <h5 class="card-title"><i class="fas fa-book fa-2x"></i> Carreras</h5></a>
               </div>
             </div>
         </div>
