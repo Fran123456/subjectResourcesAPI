@@ -17,7 +17,7 @@ class UnidadController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('unidadesByMateria');
     }
 
     public function index()
