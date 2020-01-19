@@ -20,7 +20,7 @@ class MateriaController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('materiaByCarrera');
     }
 
 
@@ -147,11 +147,12 @@ class MateriaController extends Controller
 
 
     //API
-    public function obtener_materias($key){
-      
+    public function materiaByCarrera($id, $key){
+        //$id es el id de la carrera
         $key = Key::where('llave', $key)->get();
         if(count($key)>0){
-            return Materia::all();
+           return Materia::where('carrera_id', $id)->get();
+            //return Materia::all();
         }else{
           return [];
         }

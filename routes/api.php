@@ -18,7 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('getMaterias/{key}', 'MateriaController@obtener_materias')->name('getMaterias');
+Route::get('getCarreras/{key}', 'CarreraController@carreras')->name('getCarreras');
+Route::get('getMaterias/{id}/{key}', 'MateriaController@materiaByCarrera')->name('getMaterias');
 
 Route::get('unidadesByMateria/{id}/{key}', 'UnidadController@unidadesByMateria')->name('unidadesByMateria');
 Route::get('temariosByUnidades/{id}/{key}', 'TemarioController@temariosByUnidades')->name('temariosByUnidades');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Carrera;
 use App\Materia;
+use App\Key;
 use Illuminate\Support\Facades\Storage;
 use App\Help\Helping;
 
@@ -106,5 +107,17 @@ class CarreraController extends Controller
           Carrera::destroy($id);
    
         return back()->with('delete', 'Carrera eliminada correctamente');
+    }
+
+
+    //API
+    public function carreras( $key){
+        //$id es el id de la carrera
+        $key = Key::where('llave', $key)->get();
+        if(count($key)>0){
+            return Carrera::all();
+        }else{
+          return [];
+        }
     }
 }
