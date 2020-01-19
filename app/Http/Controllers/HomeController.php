@@ -22,8 +22,8 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home');
+    {   $url = "https://api.apiuesfia.website/public/api";
+        return view('home',compact('url'));
     }
    
     public function inicio_invitado(){

@@ -33,6 +33,27 @@
            <br><br>
           <h3>Contenido API</h3>
           <hr>
+
+
+              <div class="col-md-12">
+              <ul class="list-group">
+                <li class="list-group-item active"><h5><STRONG>Consultas</STRONG></h5></li>
+                <li class="list-group-item"><h5>{{$url}}/getCarreras/{key}</h5> <span>Obtener todas las carreras <br><strong>tipo de retorno: json</strong></span></li>
+
+                <li class="list-group-item"><h5>{{$url}}/getMaterias/{id}/{key}</h5> <span>Obtener las materias de una carrera, por su id <br><strong>tipo de retorno: json</strong></span></li>
+
+                <li class="list-group-item"><h5>{{$url}}/unidadesByMateria/{id}/{key}</h5> <span>Obtener las unidades de una materia por su id  <br><strong>tipo de retorno: json</strong></span></li>
+
+                <li class="list-group-item"><h5>{{$url}}/temariosByUnidades/{id}/{key}</h5> <span>Obtener los temas de una unidad por su id <br><strong>tipo de retorno: json</strong></span></li>
+
+                <li class="list-group-item"><h5>{{$url}}/contenidos/{id}/{key}</h5> <span>Obtener los contenidos (videos y pdf) de una tema por su id <br><strong>tipo de retorno: json</strong></span></li>
+              </ul>
+              </div> 
+
+
+
+
+
         </div>
 
     </div>
