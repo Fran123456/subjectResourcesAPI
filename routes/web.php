@@ -28,3 +28,4 @@ Route::resource('temarios','TemarioController');
 Route::resource('contenidos','ContenidoController');
 Route::resource('keys','KeyController');
 Route::resource('carreras','CarreraController');
+Route::resource('colaboradores','ColaboradorController');

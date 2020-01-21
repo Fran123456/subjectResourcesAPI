@@ -20,7 +20,7 @@ class MateriaController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('materiaByCarrera');
+        $this->middleware('auth')->except('materiaByCarrera','like_materiaByCarrera');
     }
 
 
@@ -157,4 +157,28 @@ class MateriaController extends Controller
           return [];
         }
     }
+
+    public function like_materiaByCarrera($id, $arg ,$key){
+
+        
+      
+     $key = Key::where('llave', $key)->get();
+        if(count($key)>0){
+           return Materia::where('carrera_id', $id)->Where('siglas', 'like',  '%'.$arg.'%')->get();
+        }else{
+          return [];
+        } 
+    }
+
+
+    public function like_materia($arg ,$key){
+      
+     $key = Key::where('llave', $key)->get();
+        if(count($key)>0){
+           return Materia::where('siglas', 'like' ,'%'.$arg.'%')->orWhere('titulo', 'like',  '%'.$arg.'%')->get();
+        }else{
+          return [];
+        } 
+    }
+
 }

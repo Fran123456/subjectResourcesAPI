@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
+
 
 class HomeController extends Controller
 {
@@ -22,12 +24,14 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {   $url = "https://api.apiuesfia.website/public/api";
+    {   $url =  URL::to('/'). "/public/api";
         return view('home',compact('url'));
+
+
     }
    
     public function inicio_invitado(){
-        $url = "https://api.apiuesfia.website/public/api";
+        $url =  URL::to('/'). "/public/api";
         return view('welcome', compact('url'));
     }
 }
