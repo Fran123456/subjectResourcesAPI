@@ -9,6 +9,6 @@ class Materia extends Model
   protected $table = 'materias';
 
   protected $fillable = [
-      'id','titulo','descripcion'
+      'id','siglas','titulo','descripcion'
   ];
 }

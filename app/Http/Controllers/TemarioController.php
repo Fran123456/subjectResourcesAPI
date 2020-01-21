@@ -6,21 +6,26 @@ use Illuminate\Http\Request;
 use App\Materia;
 use App\Unidad;
 Use App\Temario;
-
-class TemarioController extends Controller
+Use App\Key;
+class TemarioController extends Controllere
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except('temariosByUnidades');
+    }
+
+
+
+
     public function index()
     {
         //
-    }
-
-    public function temariosByUnidades($id){
-      return Temario::where('unidad_id', $id)->get();
     }
 
     /**
@@ -41,7 +46,18 @@ class TemarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $temarios = Temario::where('unidad_id', $request->unidad)->orderBy('orden', 'asc')->get();
+         $temarios = count($temarios) + 1;
+
+         $n = Temario::create(
+            [
+                'titulo' => $request->tema,
+                'descripcion' => $request->des,
+                'unidad_id' => $request->unidad,
+                'orden'=> $temarios
+            ]);
+
+        return back()->with('success', 'Tema creado correctamente');
     }
 
     /**
@@ -52,7 +68,10 @@ class TemarioController extends Controller
      */
     public function show($id)
     {
-        //
+        $temarios = Temario::where('unidad_id', $id)->orderBy('orden', 'asc')->get();
+        $unidad = Unidad::find($id);
+        $materia = Materia::find($unidad->materia_id);
+        return view('temario.temario_content', compact('temarios','unidad','materia'));
     }
 
     /**
@@ -63,7 +82,10 @@ class TemarioController extends Controller
      */
     public function edit($id)
     {
-        //
+       $tema = Temario::find($id);
+       $unidad = Unidad::find($tema->unidad_id);
+       $unidades = Unidad::where('materia_id', $unidad->materia_id)->get();
+       return view('temario.temario_edit', compact('tema','unidad','unidades'));
     }
 
     /**
@@ -75,7 +97,16 @@ class TemarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Temario::where('id', $id)
+        ->update([
+            'titulo' => $request->tema,
+            'descripcion' => $request->des,
+            'unidad_id' =>$request->unidad,
+            'orden' =>$request->orden,
+
+          ]);
+
+        return redirect()->route('temarios.show',$request->unidad)->with('edit', 'Materia editada correctamente');
     }
 
     /**
@@ -86,6 +117,26 @@ class TemarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tema_delete = Temario::find($id);
+        Temario::destroy($id);
+        $temarios= Temario::where('unidad_id', $tema_delete->unidad_id)->get();
+
+        foreach ($temarios as $key => $value) {
+           Temario::where('id', $value->id)->update(['orden' => $key+1]);
+        }
+
+        return back()->with('delete', 'Tema eliminado correctamente');
+    }
+
+    //API
+    public function temariosByUnidades($id, $key){
+
+        $key = Key::where('llave', $key)->get();
+        if(count($key)>0){
+            return Temario::where('unidad_id', $id)->get();
+        }else{
+          return [];
+        }
+
     }
 }

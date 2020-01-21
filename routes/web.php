@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@inicio_invitado')->name('inicio');
+
+
+Route::resource('materias','MateriaController');
+Route::resource('unidades','UnidadController');
+Route::resource('temarios','TemarioController');
+Route::resource('contenidos','ContenidoController');
+Route::resource('keys','KeyController');

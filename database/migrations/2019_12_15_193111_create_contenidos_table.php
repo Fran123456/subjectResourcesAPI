@@ -19,6 +19,10 @@ class CreateContenidosTable extends Migration
             $table->text('descripcion')->nullable();
             $table->string('pdf')->nullable();
             $table->string('video')->nullable();
+<<<<<<< HEAD
+=======
+            $table->string('url')->nullable();
+>>>>>>> 79a638e9f9c41aa6b8ffcdea6a106fa4bb575b34
             $table->unsignedBigInteger('temario_id');
             $table->timestamps();
 
