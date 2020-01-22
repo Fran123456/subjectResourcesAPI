@@ -6,29 +6,24 @@
 
   <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
            <br>
            <h3>Contenido: <strong>{{$contenido->titulo}}</strong> <br> Tema: <strong>{{$tema->titulo}}</strong></h3>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('temarios.show', $tema->unidad_id) }}">Temas</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Editar contenido: {{$contenido->titulo}}</li>
+              <li class="breadcrumb-item"><a href="{{url()->previous()}}">Atras</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Editar</li>
             </ol>
           </nav>
         </div>
-        <div class="col-md-4 text-right">
-         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-          <i class="fas fa-plus"></i>
-        </button>
-
-        </div>
+        
         <hr>
 
         <div class="col-md-12">
           <center><h3><strong>Editar contenido:</strong></h3></center>
           <hr>
-          <form method="POST" action="{{ route('temarios.update', $tema->id) }}">
+          <form enctype="multipart/form-data" method="POST" action="{{ route('contenidos.update', $contenido->id) }}">
             @csrf
             <input type="hidden" name="_method" value="put" />
               
@@ -51,19 +46,21 @@
                    <label>Codigo embebido</label>
                    <textarea  rows="4" required=""  name="embebido" class="form-control">{{$contenido->video}}</textarea>
                 </div>
+                <input type="hidden" name="oculto"  value="youtube">
               @else
                <div class="form-group">
                   <br>
                   <label>Archivo PDF</label>
-                  <input type="file" class="form-control-file" required=""  name="file">
+                  <input type="file" class="form-control-file"   name="file">
+                  <input type="hidden" name="oculto"  value="pdf">
                 </div>
               @endif
 
-
+              <input type="hidden" name="materia" value="{{$materia->id}}">
 
                <div class="form-group" >
                  <label>Temas:</label>
-                 <select name="unidad" class="form-control">
+                 <select name="temasxd" class="form-control">
                    @foreach ($temas as $element)
                     @if ($element->id == $tema->id)
                       <option selected="" value="{{$element->id}}" >{{$element->titulo}}</option>

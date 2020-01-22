@@ -79,10 +79,11 @@
           <h3>{{$materia->titulo}}</h3>
 
           <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
+           <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('materias.index') }}">Materias</a></li>
-              <li class="breadcrumb-item active" aria-current="page">{{$materia->titulo}}</li>
+              <li class="breadcrumb-item"><a href="{{ route('carreras.index') }}">Carreras</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('materias.show', $carrera->id) }}">Materias de {{$carrera->carrera}}</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Unidades</li>
             </ol>
           </nav>
           
@@ -95,11 +96,11 @@
            <hr>
         <div class="col-md-12">
             @if(count($unidades)>0)
-             <table class="table">
+             <table id="table" class="table">
               <thead class="thead-dark">
                 <tr>
                   <th width="50" scope="col">#</th>
-                  <th scope="col">Unidad</th>
+                  <th width="300" scope="col">Unidad</th>
                   <th scope="col">Descripción</th>
                   <th width="50" scope="col">Consultar</th>
                   <th width="50" scope="col">Editar</th>
@@ -135,4 +136,11 @@
 
     </div>
 </div>
+
+
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#table').DataTable();
+} );
+</script>
 @endsection

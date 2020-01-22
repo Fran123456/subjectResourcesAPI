@@ -13,7 +13,14 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('getMaterias/{key}', 'MateriaController@obtener_materias')->name('getMaterias');
+
+
+Route::get('getCarreras/{key}', 'CarreraController@carreras')->name('getCarreras');
+
+Route::get('getMaterias/{id}/{key}', 'MateriaController@materiaByCarrera')->name('getMaterias');
+Route::get('buscarMateriaByCarrera/{id}/{arg}/{key}', 'MateriaController@like_materiaByCarrera')->name('buscarMateriaByCarrera');
+Route::get('likeMateria/{arg}/{key}', 'MateriaController@like_materiaByCarrera')->name('likeMateria');
+
 Route::get('unidadesByMateria/{id}/{key}', 'UnidadController@unidadesByMateria')->name('unidadesByMateria');
 Route::get('temariosByUnidades/{id}/{key}', 'TemarioController@temariosByUnidades')->name('temariosByUnidades');
 Route::get('contenidos/{id}/{key}', 'ContenidoController@contenidos')->name('contenidos');

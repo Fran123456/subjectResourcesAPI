@@ -7,7 +7,8 @@ use App\Materia;
 use App\Unidad;
 Use App\Temario;
 Use App\Key;
-class TemarioController extends Controllere
+Use App\Carrera;
+class TemarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -71,7 +72,8 @@ class TemarioController extends Controllere
         $temarios = Temario::where('unidad_id', $id)->orderBy('orden', 'asc')->get();
         $unidad = Unidad::find($id);
         $materia = Materia::find($unidad->materia_id);
-        return view('temario.temario_content', compact('temarios','unidad','materia'));
+        $carrera = Carrera::find($materia->carrera_id);
+        return view('temario.temario_content', compact('temarios','unidad','materia','carrera'));
     }
 
     /**

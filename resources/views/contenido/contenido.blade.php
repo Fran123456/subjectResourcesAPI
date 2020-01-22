@@ -129,10 +129,11 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('materias.index') }}">Materias</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('materias.show', $materia->id) }}">{{$materia->titulo}}</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('temarios.show', $unidad->id) }}">Temas</a></li>
-              <li class="breadcrumb-item active" aria-current="page">{{$temario->titulo}}</li>
+              <li class="breadcrumb-item"><a href="{{ route('carreras.index') }}">Carreras</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('materias.show', $carrera->id) }}">Materias de {{$carrera->carrera}}</a></li>
+              <li class="breadcrumb-item "><a href="{{ route('unidades.show', $materia->id) }}">{{$unidad->titulo}}</a></li>
+              <li class="breadcrumb-item "><a href="{{ route('temarios.show', $unidad->id) }}">{{$temario->titulo}}</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Contenido</li>
             </ol>
           </nav>
           
@@ -157,7 +158,7 @@
 
         <div class="col-md-12">
           @if(count($contenidoPDF) > 0 || count($contenidoVideo) > 0)
-            <table class="table">
+            <table id="table" class="table">
               <thead class="thead-dark">
                 <tr>
                   <th width="40"  scope="col">#</th>
@@ -223,4 +224,11 @@
 
     </div>
 </div>
+
+
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#table').DataTable();
+} );
+</script>
 @endsection

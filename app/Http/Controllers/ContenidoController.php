@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Contenido;
 use App\Materia;
 use App\Unidad;
 use App\Temario;
 use App\Key;
+use App\Carrera;
+use App\Help\Helping;
 
 class ContenidoController extends Controller
 {
@@ -47,10 +50,15 @@ class ContenidoController extends Controller
      */
     public function store(Request $request)
     {
+        $t = Temario::find($request->temario);
+        $u = Unidad::find($t->unidad_id);
+        $materia = Materia::find($u->materia_id);
         if($request->op =="pdf"){
-            $file  = $request->file('file');
-            $name = time().$file->getClientOriginalName();
-            $file->move(public_path().'/pdf',$name);
+
+           // $file  = $request->file('file');
+           // $name = time().$file->getClientOriginalName();
+           //  $file->move(public_path().'/pdf',$name);
+           $name =  Helping::subir_Archivo($request, 'pdf/'.$materia->siglas, $materia->siglas.'/');
 
             $data = Contenido::create([
               'titulo'=> $request->nombre,
@@ -83,9 +91,10 @@ class ContenidoController extends Controller
         $temario = Temario::find($id);
         $unidad = Unidad::find($temario->unidad_id);
         $materia = Materia::find($unidad->materia_id);
+        $carrera = Carrera::find($materia->carrera_id);
         $contenidoVideo = Contenido::where('temario_id', $id)->where('video','!=', null)->get();
         $contenidoPDF = Contenido::where('temario_id', $id)->where('pdf','!=', null)->get();
-        return view('contenido.contenido', compact('contenidoVideo','contenidoPDF','temario','unidad','materia'));
+        return view('contenido.contenido', compact('contenidoVideo','contenidoPDF','temario','unidad','materia','carrera'));
     }
 
     /**
@@ -99,7 +108,10 @@ class ContenidoController extends Controller
        $contenido = Contenido::find($id);
        $tema = Temario::find($contenido->temario_id);
        $temas = Temario::where('unidad_id', $tema->unidad_id)->get();
-       return view('contenido.contenido_edit', compact('contenido','tema','temas'));
+       $unidad = Unidad::find($tema->unidad_id);
+
+       $materia = Materia::find($unidad->materia_id);
+       return view('contenido.contenido_edit', compact('contenido','tema','temas','materia'));
     }
 
     /**
@@ -110,20 +122,60 @@ class ContenidoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   $contenido =  Contenido::find($id);
+        if($request->oculto == "pdf"){
+            
+            if($request->file == null){
+              //no subiremos nada ni actualizaremos el archivo.
+                Contenido::where('id', $id)
+                ->update([
+                    'titulo' => $request->tema,
+                    'descripcion' => $request->des,
+                    'temario_id' => $request->temasxd
+                ]);
+            }else{
+              
+              $materia = Materia::find($request->materia);
+              Storage::disk('public')->delete('pdf/'.$contenido->pdf);
+
+              $name =  Helping::subir_Archivo($request, 'pdf/'.$materia->siglas, $materia->siglas.'/');
+              Contenido::where('id', $id)
+              ->update([
+                    'titulo' => $request->tema,
+                    'descripcion' => $request->des,
+                    'pdf' =>$name,
+                    'temario_id' => $request->temasxd
+                  ]);
+            }
+        }else{
+             Contenido::where('id', $id)
+              ->update([
+                    'titulo' => $request->tema,
+                    'descripcion' => $request->des,
+                    'video' =>$request->embebido,
+                    'url' => $request->url
+                  ]);
+        }
+       
+       return redirect()->route('contenidos.show',$contenido->temario_id)->with('edit', 'Contenido editado correctamente');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resourcreqe from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {    $temarioUnlink = Contenido::find($id);
+    {   $contenidoUnlink = Contenido::find($id);
+        $t = Temario::find($contenidoUnlink->temario_id);
+        $u = Unidad::find($t->unidad_id);
+        $m = Unidad::find($u->materia_id);
+       // $materia = Materia::find($u->materia_id);
         Contenido::destroy($id);
-        //unlink(url('/').'/pdf/'.$temarioUnlink->pdf);
+      
+
+        Storage::disk('public')->delete('pdf/'.$m->siglas.'/'.$contenidoUnlink->pdf);
         return back()->with('delete', 'Contenido eliminado correctamente');
     }
 
@@ -166,4 +218,6 @@ class ContenidoController extends Controller
         }
 
     }
+
+    
 }

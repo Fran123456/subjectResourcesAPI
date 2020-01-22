@@ -5,6 +5,10 @@ use App\Materia;
 use App\Unidad;
 use App\Temario;
 use App\Key;
+use App\Carrera;
+use App\Help\Helping;
+use Illuminate\Support\Facades\Storage;
+
 class MateriaController extends Controller
 {
     /**
@@ -14,12 +18,12 @@ class MateriaController extends Controller
      */
     public function __construct()
     {
-      $this->middleware('auth')->except('obtener_materias');
+        $this->middleware('auth')->except('materiaByCarrera','like_materiaByCarrera');
     }
     public function index()
     {
-        $materias  =  Materia::paginate(15);
-        return view('materia.materias', compact('materias'));
+       // $materias  =  Materia::paginate(15);
+        //return view('materia.materias', compact('materias'));
     }
     /**
      * Show the form for creating a new resource.
@@ -38,13 +42,18 @@ class MateriaController extends Controller
      */
     public function store(Request $request)
     {
+            $carrera = Carrera::find($request->carrera);
             $materia = Materia::create(
             [
                 'siglas' => $request->siglas,
                 'titulo' => $request->materia,
                 'descripcion' => $request->des,
+                'carrera_id'=>$request->carrera,
+                'ciclo'=>$request->ciclo,
             ]);
-        return back()->with('success', 'Materia creada correctamente');
+          //  $carpeta = Helping::reemplazar_caracter(" ", "-", $carrera->carrera);
+            Storage::disk('public')->makeDirectory('pdf/'.$request->siglas);
+            return back()->with('success', 'Materia creada correctamente');
     }
     /**
      * Display the specified resource.
@@ -54,14 +63,26 @@ class MateriaController extends Controller
      */
     public function show($id)
     {
-        $materia  = Materia::find($id);
-        $unidades = Unidad::where('materia_id', $id)->orderBy('orden_u', 'asc')->get();
-        $temarios = array();
-        foreach ($unidades as $key => $value) {
-            $temarios[$key] = Temario::where('unidad_id', $value->id)->get();
-        }
-        return view('materia.content', compact('materia','unidades','temarios'));
+
+        $carrera = Carrera::find($id);
+        $materias = Materia::where('carrera_id', $id)->get();
+        return view('materia.materias', compact('materias','carrera', 'id'));
+
     }
+
+  /*  public function ciclo($id){
+    // $id es el id de la carrera
+        $carrera = Carrera::find($id);
+       return view('materia.ciclos', compact('carrera'));
+    }
+
+    public function materias_ciclo($id, $ciclo){
+      //$id es e id de la carrera y el $ciclo es el numero del ciclo al que pertenece
+        $carrera = Carrera::find($id);
+        $materias = Materia::where('carrera_id', $id)->where('ciclo', $ciclo)->get();
+        return view('materia.materias', compact('materias','carrera', 'id','ciclo'));
+    }*/
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -71,7 +92,8 @@ class MateriaController extends Controller
     public function edit($id)
     {
         $materia = Materia::find($id);
-        return view('materia.materia_edit', compact('materia'));
+        $carreras = Carrera::all();
+        return view('materia.materia_edit', compact('materia','carreras'));
     }
     /**
      * Update the specified resource in storage.
@@ -87,9 +109,11 @@ class MateriaController extends Controller
             'siglas' => $request->siglas,
             'titulo' => $request->materia,
             'descripcion' => $request->des,
+            'carrera_id' => $request->carrera,
+            'ciclo' => $request->ciclo,
           ]);
 
-        return redirect()->route('materias.index')->with('edit', 'Materia editada correctamente');
+        return redirect()->route('materias.show', $request->carrera)->with('edit', 'Materia editada correctamente');
     }
     /**
      * Remove the specified resource from storage.
@@ -99,17 +123,50 @@ class MateriaController extends Controller
      */
     public function destroy($id)
     {
+        $materiaD = Materia::find($id);
         Materia::destroy($id);
-        return back()->with('delete', 'Unidad eliminada correctamente');
+        Storage::disk('public')->deleteDirectory('pdf/'.$materiaD->siglas, true);
+
+      //  $c = Carrera::find($materiaD->carrera_id);
+
+       // $carpeta = Helping::reemplazar_caracter(" ", "-", $c->carrera);
+       // Storage::disk('public')->deleteDirectory('pdf/'.$carpeta.'/ciclo-'.$materiaD->ciclo.'/'.$materiaD->siglas, true);
+
+       return back()->with('delete', 'Materia eliminada correctamente');
     }
     //API
-    public function obtener_materias($key){
-
+    public function materiaByCarrera($id, $key){
+        //$id es el id de la carrera
         $key = Key::where('llave', $key)->get();
         if(count($key)>0){
-            return Materia::all();
+           return Materia::where('carrera_id', $id)->get();
+            //return Materia::all();
         }else{
           return [];
         }
     }
+
+    public function like_materiaByCarrera($id, $arg ,$key){
+
+
+
+     $key = Key::where('llave', $key)->get();
+        if(count($key)>0){
+           return Materia::where('carrera_id', $id)->Where('siglas', 'like',  '%'.$arg.'%')->get();
+        }else{
+          return [];
+        }
+    }
+
+
+    public function like_materia($arg ,$key){
+
+     $key = Key::where('llave', $key)->get();
+        if(count($key)>0){
+           return Materia::where('siglas', 'like' ,'%'.$arg.'%')->orWhere('titulo', 'like',  '%'.$arg.'%')->get();
+        }else{
+          return [];
+        }
+    }
+
 }
