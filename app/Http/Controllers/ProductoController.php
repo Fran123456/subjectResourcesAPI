@@ -3,26 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Colaborador;
+use App\Producto;
 use App\Key;
+use App\Imagen;
 
-class ColaboradorController extends Controller
+class ProductoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function __construct()
-    {
-        $this->middleware('auth')->except('listar_colaboradores');
-    }
-
     public function index()
     {
-        $c = Colaborador::all();
-        return view('colaborador.colaboradores', compact('c'));
+        //
     }
 
     /**
@@ -43,16 +37,7 @@ class ColaboradorController extends Controller
      */
     public function store(Request $request)
     {
-
-      $c = Colaborador::create(
-      [
-          'nombre' => $request->nombre,
-          'contacto' => $request->con,
-          'descripcion' => $request->des,
-
-      ]);
-
-      return back()->with('success', 'Colaborador creado correctamente');
+        //
     }
 
     /**
@@ -74,8 +59,7 @@ class ColaboradorController extends Controller
      */
     public function edit($id)
     {
-      $c = Colaborador::find($id);
-      return view('colaborador.colaborador_edit', compact('c'));
+        //
     }
 
     /**
@@ -87,14 +71,7 @@ class ColaboradorController extends Controller
      */
     public function update(Request $request, $id)
     {
-      Colaborador::where('id', $id)
-     ->update([
-       'nombre' => $request->nombre,
-       'contacto' => $request->con,
-       'descripcion' => $request->des,
-       ]);
-
-     return redirect()->route('colaboradores.index')->with('edit', 'Colaborador editado correctamente');
+        //
     }
 
     /**
@@ -105,18 +82,24 @@ class ColaboradorController extends Controller
      */
     public function destroy($id)
     {
-
-      Colaborador::destroy($id);
-     return back()->with('delete', 'Colaborador eliminado correctamente');
+        //
     }
 
 
     //API
-    public function listar_colaboradores($key){
-        
+    public function obtener_Productos($key){
         $key = Key::where('llave', $key)->get();
         if(count($key)>0){
-           return Colaborador::all();
+          return Producto::where('estado', 'publicado')->get();
+        }else{
+          return [];
+        }
+    }
+
+    public function obtener_imagenes($id, $key){
+       $key = Key::where('llave', $key)->get();
+        if(count($key)>0){
+           return Imagen::where('producto_id', $id)->get();
         }else{
           return [];
         }

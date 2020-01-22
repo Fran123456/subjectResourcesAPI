@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 18-01-2020 a las 05:23:51
+-- Tiempo de generación: 22-01-2020 a las 05:37:23
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.2.19
 
@@ -42,6 +42,21 @@ CREATE TABLE `carreras` (
 
 INSERT INTO `carreras` (`id`, `carrera`, `descripcion`, `created_at`, `updated_at`) VALUES
 (1, 'UCB', NULL, '2020-01-18 04:55:57', '2020-01-18 10:29:13');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `colaboradores`
+--
+
+CREATE TABLE `colaboradores` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(200) NOT NULL,
+  `contacto` int(11) DEFAULT NULL,
+  `descripcion` text,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -502,6 +517,44 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `grupos`
+--
+
+CREATE TABLE `grupos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(200) NOT NULL,
+  `sub_nombre` varchar(200) NOT NULL,
+  `url` varchar(200) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `imagenes`
+--
+
+CREATE TABLE `imagenes` (
+  `id` int(11) NOT NULL,
+  `url` varchar(250) NOT NULL,
+  `producto_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `imagenes`
+--
+
+INSERT INTO `imagenes` (`id`, `url`, `producto_id`, `created_at`, `updated_at`) VALUES
+(1, '3.jpg', 1, '2020-01-22 05:14:32', '2020-01-22 05:14:32'),
+(2, '1.jpg', 1, '2020-01-22 05:14:23', '2020-01-22 05:14:23'),
+(3, '2.jpg', 1, '2020-01-22 05:14:32', '2020-01-22 05:14:32');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `keys`
 --
 
@@ -584,6 +637,32 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(250) NOT NULL,
+  `precio` varchar(100) NOT NULL,
+  `fecha` varchar(25) NOT NULL,
+  `descripcion` text,
+  `whatsapp` varchar(200) NOT NULL,
+  `nombre` varchar(200) NOT NULL,
+  `estado` varchar(30) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id`, `titulo`, `precio`, `fecha`, `descripcion`, `whatsapp`, `nombre`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 'Laptop HP ', '135', '21/1/2020', NULL, '76064602', 'Francisco Navas', 'publicado', '2020-01-22 05:10:40', '2020-01-22 05:10:40');
 
 -- --------------------------------------------------------
 
@@ -745,6 +824,12 @@ ALTER TABLE `carreras`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `colaboradores`
+--
+ALTER TABLE `colaboradores`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `contenidos`
 --
 ALTER TABLE `contenidos`
@@ -756,6 +841,19 @@ ALTER TABLE `contenidos`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `grupos`
+--
+ALTER TABLE `grupos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `imagenes`
+--
+ALTER TABLE `imagenes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `producto_id` (`producto_id`);
 
 --
 -- Indices de la tabla `keys`
@@ -783,6 +881,12 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`(191));
 
 --
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `temarios`
 --
 ALTER TABLE `temarios`
@@ -807,16 +911,40 @@ ALTER TABLE `carreras`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `colaboradores`
+--
+ALTER TABLE `colaboradores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `contenidos`
 --
 ALTER TABLE `contenidos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=427;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=425;
+
+--
+-- AUTO_INCREMENT de la tabla `grupos`
+--
+ALTER TABLE `grupos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `imagenes`
+--
+ALTER TABLE `imagenes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `materias`
 --
 ALTER TABLE `materias`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
@@ -827,6 +955,12 @@ ALTER TABLE `materias`
 --
 ALTER TABLE `contenidos`
   ADD CONSTRAINT `contenidos_ibfk_1` FOREIGN KEY (`temario_id`) REFERENCES `temarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `imagenes`
+--
+ALTER TABLE `imagenes`
+  ADD CONSTRAINT `imagenes_ibfk_1` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `materias`

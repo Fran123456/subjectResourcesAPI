@@ -77,14 +77,20 @@
                   <br><strong>tipo de retorno: json</strong></span></li>
 
 
-                  <li class="list-group-item"><h5>{{$url}}/buscarMateriaByCarrera/{id}/{arg}/{key}</h5> <span>Obtener las materias o materia por busqueda, pero deben pertenecer a una carrera en especifica.
+                  <li class="list-group-item"><h5>{{$url}}/buscarMateriaByCarrera/{id}/{arg}/{key}</h5> <span>Obtiene las materias o materia por busqueda, pero deben pertenecer a una carrera en especifica.
                   <br><strong>id:</strong> El argumento {id}, debe ser el id de de la carrera.
                   <br><strong>arg:</strong> El argumento {arg}, debe ser lo que el usuario escribe en la busqueda, debe ser las siglas de la materia.
                   <br><strong>tipo de retorno: json</strong></span></li>
 
 
-                  <li class="list-group-item"><h5>{{$url}}/likeMateria/{arg}/{key}</h5> <span>Obtener las materias o materia por busqueda, no importando de que carrera sean.
-                  <br><strong>arg:</strong> El argumento {arg}, debe ser lo que el usuario escribe en la busqueda, debe ser las siglas de la materia o por su nombre.
+                  <li class="list-group-item"><h5>{{$url}}/getProductos/{key}</h5> <span>Obtiene los productos que han sido aprovados.
+                  <br><strong>tipo de retorno: json</strong></span></li>
+
+                  <li class="list-group-item"><h5>{{$url}}/getPictures/{id}/{key}</h5> <span>Obtiene todas las imagenes asociadas a un producto en especifico.
+                  <br><strong>id:</strong> El argumento {id}, debe ser el id del producto.
+                  <br><strong>tipo de retorno: json</strong></span></li>
+
+                  <li class="list-group-item"><h5>{{$url}}/getColaboradores/{key}</h5> <span>Obtiene todos los colaboradores.
                   <br><strong>tipo de retorno: json</strong></span></li>
 
 
