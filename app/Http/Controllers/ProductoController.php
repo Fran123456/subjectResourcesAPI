@@ -59,8 +59,8 @@ class ProductoController extends Controller
         for ($i=0; $i < count($request->fotos) ; $i++) {
 
           $image = Image::make($request->fotos[$i]);
-          $image->resize(600, 800);
-          //$image->resizeCanvas(600, 700);
+          $image->resize(500, 500);
+          //$image->resizeCanvas(500, 500);
           $file = $request->fotos[$i];
           $original = Helping::reemplazar_caracter(" ","-", $file->getClientOriginalName());
           $name = Helping::code_().'-'.time().$original;
