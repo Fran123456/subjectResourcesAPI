@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 22-01-2020 a las 17:58:19
--- Versión del servidor: 10.1.43-MariaDB-cll-lve
--- Versión de PHP: 7.2.7
+-- Tiempo de generación: 23-01-2020 a las 02:04:04
+-- Versión del servidor: 5.7.24
+-- Versión de PHP: 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `apiurpio_apiresources`
+-- Base de datos: `apiresources`
 --
 
 -- --------------------------------------------------------
@@ -543,15 +543,6 @@ CREATE TABLE `imagenes` (
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `imagenes`
---
-
-INSERT INTO `imagenes` (`id`, `url`, `producto_id`, `created_at`, `updated_at`) VALUES
-(1, '3.jpg', 1, '2020-01-22 05:14:32', '2020-01-22 05:14:32'),
-(2, '1.jpg', 1, '2020-01-22 05:14:23', '2020-01-22 05:14:23'),
-(3, '2.jpg', 1, '2020-01-22 05:14:32', '2020-01-22 05:14:32');
-
 -- --------------------------------------------------------
 
 --
@@ -657,14 +648,6 @@ CREATE TABLE `productos` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `productos`
---
-
-INSERT INTO `productos` (`id`, `titulo`, `precio`, `fecha`, `descripcion`, `whatsapp`, `nombre`, `estado`, `principal`, `created_at`, `updated_at`) VALUES
-(1, 'Vendo bonita lapto todo funciona al 100 hp', '135', '21/1/2020', 'VENDO LAPTOP MARCA ACER A TODA PRUEBA funcionando al 100, procesador INTEL PENTIUM 1.87GHZ, RAM 4GB, disco duro 320GB, windows 10 PRO, Office 2019, puerto para VGA, puerto para micrófono y auriculares, 3 puertos de USB, webcam, teclado y bocinas nítidas, quemador de CD\'S, reproductor de DVD, batería dura', '76064602', 'Francisco Navas', 'publicado', '1.jpg', '2020-01-22 05:10:40', '2020-01-22 05:10:40'),
-(2, 'Laptop HP 2', '156', '21/1/2020', 'VENDO LAPTOP MARCA ACER A TODA PRUEBA funcionando al 100, procesador INTEL PENTIUM 1.87GHZ, RAM 4GB, disco duro 320GB, windows 10 PRO, Office 2019, puerto para VGA, puerto para micrófono y auriculares, 3 puertos de USB, webcam, teclado y bocinas nítidas, quemador de CD\'S, reproductor de DVD, batería dura 2 horas, ', '76064602', 'Francisco Navas', 'publicado', '2.jpg', '2020-01-22 05:10:40', '2020-01-22 05:10:40');
 
 -- --------------------------------------------------------
 
@@ -934,7 +917,7 @@ ALTER TABLE `grupos`
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `materias`
@@ -946,7 +929,7 @@ ALTER TABLE `materias`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
