@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Producto;
 use App\Key;
 use App\Imagen;
+use App\Help\Helping;
+use Image;
+use Illuminate\Support\Facades\Storage;
 
 class ProductoController extends Controller
 {
@@ -16,7 +19,8 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        $productos = Producto::all();
+        return view('MarketPlace.ventas', compact('productos'));
     }
 
     /**
@@ -26,7 +30,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -37,7 +41,48 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+
+
+      $p = Producto::create([
+        'titulo'=> $request->titulo,
+        'precio'=> $request->precio,
+        'fecha' => date("d").'-'.date("m").'-'.date('Y'),
+        'descripcion'=> $request->des,
+        'whatsapp'=> $request->ws,
+        'nombre'=> $request->nombre,
+        'estado' =>'publicado',
+        'principal' =>'no',
+      ]);
+
+        for ($i=0; $i < count($request->fotos) ; $i++) {
+
+          $image = Image::make($request->fotos[$i]);
+          $image->resize(600, 800);
+          //$image->resizeCanvas(600, 700);
+          $file = $request->fotos[$i];
+          $original = Helping::reemplazar_caracter(" ","-", $file->getClientOriginalName());
+          $name = Helping::code_().'-'.time().$original;
+        //  $file->move(public_path().'/'.'uploads/',$name);
+
+          $image->save('uploads/'.$name);
+
+          //subimos las img a la bd
+          $img = Imagen::create([
+            'url'=> $name,
+            'producto_id'=> $p->id,
+          ]);
+
+          if($i == 0){
+            Producto::where('id', $p->id)
+            ->update([
+                'principal' => $name,
+            ]);
+          }
+        }
+
+        return back()->with('success', 'Producto agregado correctamente');
     }
 
     /**
@@ -82,7 +127,15 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        //
+         // $materia = Materia::find($u->materia_id);
+
+          $imgs = Imagen::where('producto_id', $id)->get();
+          Producto::destroy($id);
+
+         foreach ($imgs as $key => $value) {
+           Storage::disk('public')->delete('uploads/'.$value->url);
+         }
+          return back()->with('delete', 'Contenido eliminado correctamente');
     }
 
 

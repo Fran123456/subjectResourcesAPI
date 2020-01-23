@@ -20,7 +20,7 @@ Route::get('/', 'HomeController@inicio_invitado')->name('inicio');
 
 //Route::get('ciclos/{id}', 'MateriaController@ciclo')->name('ciclos');
 //Route::get('materias-ciclo/{id}/{ciclo}', 'MateriaController@materias_ciclo')->name('materias-ciclo');
-
+Route::resource('productos','ProductoController');
 
 Route::resource('materias','MateriaController');
 Route::resource('unidades','UnidadController');
