@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 23-01-2020 a las 02:04:04
+-- Tiempo de generación: 26-01-2020 a las 17:15:26
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.2.19
 
@@ -58,6 +58,13 @@ CREATE TABLE `colaboradores` (
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `colaboradores`
+--
+
+INSERT INTO `colaboradores` (`id`, `nombre`, `contacto`, `descripcion`, `created_at`, `updated_at`) VALUES
+(1, 'Andres Cordero', NULL, NULL, '2020-01-23 11:55:43', '2020-01-23 11:55:43');
+
 -- --------------------------------------------------------
 
 --
@@ -83,13 +90,13 @@ CREATE TABLE `contenidos` (
 
 INSERT INTO `contenidos` (`id`, `titulo`, `descripcion`, `pdf`, `video`, `url`, `vistas`, `temario_id`, `created_at`, `updated_at`) VALUES
 (4, 'Producto de matrices (Video oficial UES)', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/K-I3qJO5gbo\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/K-I3qJO5gbo', 1, 10, '2019-12-27 07:52:21', '2020-01-09 09:32:53'),
-(5, 'Determinante de una matriz (Video oficial UES)', 'Video oficial UES, modalidad en linea', NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/yN906RenIjI\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/yN906RenIjI', 0, 11, '2019-12-27 08:05:05', '2019-12-27 08:05:05'),
+(5, 'Determinante de una matriz (Video oficial UES)', 'Video oficial UES, modalidad en linea', NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/yN906RenIjI\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/yN906RenIjI', 3, 11, '2019-12-27 08:05:05', '2020-01-23 04:20:37'),
 (6, 'Solución de sistema de ecuaciones lineales - Gauss (Video oficial UES)', 'Video oficial UES, modalidad en linea', NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/SrOh6ZkmuXw\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/SrOh6ZkmuXw', 0, 15, '2019-12-27 08:06:56', '2019-12-27 08:06:56'),
-(7, 'Matrices', 'MATRICES Y DETERMINANTES,IGUALDAD DE MATRICES', 'MAT315/1577416102MAT315-DefiniciondeMatriz.pdf', NULL, NULL, 14, 8, '2019-12-27 09:08:22', '2020-01-14 12:14:39'),
-(8, 'Matrices Introducción - Conceptos básicos', 'Qué es una matriz, cuales son sus elementos, cómo se nombran los elementos y qué es dimensión, orden o tamaño de una matriz y cuales son las filas y las columnas de una matriz. dentro del curso de Matrices.', NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/m6w5vLA3Lnw\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/m6w5vLA3Lnw', 3, 8, '2019-12-27 09:10:57', '2020-01-11 01:52:19'),
+(7, 'Matrices', 'MATRICES Y DETERMINANTES,IGUALDAD DE MATRICES', '1577416102MAT315-DefiniciondeMatriz.pdf', NULL, NULL, 16, 8, '2019-12-27 09:08:22', '2020-01-23 09:07:45'),
+(8, 'Matrices Introducción - Conceptos básicos', 'Qué es una matriz, cuales son sus elementos, cómo se nombran los elementos y qué es dimensión, orden o tamaño de una matriz y cuales son las filas y las columnas de una matriz. dentro del curso de Matrices.', NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/m6w5vLA3Lnw\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/m6w5vLA3Lnw', 4, 8, '2019-12-27 09:10:57', '2020-01-23 08:43:15'),
 (9, 'Igualdad de matrices - Ejercicio 1', 'Igualdad de matrices', NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/qklcvGovUvk\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/qklcvGovUvk', 3, 8, '2019-12-27 09:15:20', '2020-01-11 01:52:42'),
 (10, 'Igualdad de matrices - Ejercicio 2', 'Igualdad de matrices', NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/yyu8sFNd-5o\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/yyu8sFNd-5o', 2, 8, '2019-12-27 09:16:17', '2020-01-11 01:52:52'),
-(11, 'Operaciones elementales en filas o columnas', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/a9S1E4L1Tto\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/a9S1E4L1Tto', 0, 9, '2019-12-27 09:18:25', '2019-12-27 09:18:25'),
+(11, 'Operaciones elementales en filas o columnas', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/a9S1E4L1Tto\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/a9S1E4L1Tto', 1, 9, '2019-12-27 09:18:25', '2020-01-23 08:20:47'),
 (12, 'Definición de matriz', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/D1nSy06buSY\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/D1nSy06buSY', 2, 8, '2019-12-27 09:20:07', '2020-01-11 00:31:03'),
 (13, 'Suma de matrices', 'suma de matrices', NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/Up8YgUkKSgQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/Up8YgUkKSgQ', 0, 10, '2019-12-27 09:23:28', '2019-12-27 09:23:28'),
 (14, 'Propiedades de la suma de matrices', 'Propiedades de la suma de matrices', NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/QEt5kto3CoA\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/QEt5kto3CoA', 0, 10, '2019-12-27 09:24:09', '2019-12-27 09:24:09'),
@@ -105,9 +112,9 @@ INSERT INTO `contenidos` (`id`, `titulo`, `descripcion`, `pdf`, `video`, `url`, 
 (24, 'Matrices equivalentes', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/c0JXSEkwuBU\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/c0JXSEkwuBU', 0, 9, '2019-12-27 09:38:25', '2019-12-27 09:38:25'),
 (25, 'Multiplicación de matrices - Ejemplo 3', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/IhCjpEZf-7Y\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/IhCjpEZf-7Y', 0, 10, '2019-12-27 09:39:34', '2019-12-27 09:39:34'),
 (26, 'Multiplicación de matrices - Ejemplo 4', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/RE0WBImzs9E\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/RE0WBImzs9E', 0, 10, '2019-12-27 09:40:08', '2019-12-27 09:40:08'),
-(27, 'Operación con matrices', NULL, 'MAT315/1577418336MAT315-operacionesconMatrices.pdf', NULL, NULL, 1, 10, '2019-12-27 09:45:36', '2020-01-14 12:15:22'),
+(27, 'Operación con matrices', NULL, '1577418336MAT315-operacionesconMatrices.pdf', NULL, NULL, 1, 10, '2019-12-27 09:45:36', '2020-01-14 12:15:22'),
 (28, 'Matriz identica', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/cVH58XBSYHo\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/cVH58XBSYHo', 0, 9, '2019-12-27 09:47:14', '2019-12-27 09:47:14'),
-(29, 'Determinante - Definición', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/vvYaL0xf0Gk\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/vvYaL0xf0Gk', 0, 11, '2019-12-27 09:51:22', '2019-12-27 09:51:22'),
+(29, 'Determinante - Definición', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/vvYaL0xf0Gk\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/vvYaL0xf0Gk', 1, 11, '2019-12-27 09:51:22', '2020-01-23 04:31:57'),
 (30, 'Determinante de una matriz de 2x2', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/bsUUVmeqsdY\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/bsUUVmeqsdY', 0, 11, '2019-12-27 09:53:48', '2019-12-27 09:53:48'),
 (31, 'Determinante de una matriz de 3x3 Regla de Sarrus', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/8OnOZvc5rFQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/8OnOZvc5rFQ', 0, 11, '2019-12-27 09:54:52', '2019-12-27 09:54:52'),
 (32, 'Cálculo de un determinante por definición - Ejercicio 1', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/1D5BNYp35Aw\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/1D5BNYp35Aw', 0, 11, '2019-12-27 09:57:54', '2019-12-27 09:57:54'),
@@ -116,8 +123,8 @@ INSERT INTO `contenidos` (`id`, `titulo`, `descripcion`, `pdf`, `video`, `url`, 
 (35, 'Matriz adjunta - Definición', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/MJeJhUIkVBw\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/MJeJhUIkVBw', 0, 11, '2019-12-27 10:02:51', '2019-12-27 10:02:51'),
 (36, 'Matriz adjunta', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/l51Epr3SY1Y\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/l51Epr3SY1Y', 0, 11, '2019-12-27 10:04:02', '2019-12-27 10:04:02'),
 (37, 'Matriz inversa método del adjunto - cofactores', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ZDiZUrfG_MI\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/ZDiZUrfG_MI', 1, 12, '2019-12-27 10:09:03', '2020-01-11 00:40:23'),
-(38, 'Determinante', NULL, 'MAT315/1577420777MAT315-determinantes.pdf', NULL, NULL, 1, 11, '2019-12-27 10:26:17', '2020-01-11 01:53:49'),
-(39, 'Determinante 2', NULL, 'MAT315/1577421199MAT315-determinantes2.pdf', NULL, NULL, 0, 11, '2019-12-27 10:33:19', '2019-12-27 10:33:19'),
+(38, 'Determinante', NULL, '1577420777MAT315-determinantes.pdf', NULL, NULL, 1, 11, '2019-12-27 10:26:17', '2020-01-11 01:53:49'),
+(39, 'Determinante 2', NULL, '1577421199MAT315-determinantes2.pdf', NULL, NULL, 0, 11, '2019-12-27 10:33:19', '2019-12-27 10:33:19'),
 (40, 'Reducción de matrices - Gauss y Gauss Jordan', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/qYa-iLBlZ6A\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/qYa-iLBlZ6A', 0, 11, '2019-12-27 10:37:53', '2019-12-27 10:37:53'),
 (41, 'Reducción de matrices de 2x2 Método de Gauss', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/PJJG21lsius\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/PJJG21lsius', 0, 11, '2019-12-27 10:38:37', '2019-12-27 10:38:37'),
 (42, 'Reducción de matrices de 3x3 Método de Gauss', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/WESrEM8YHQE\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/WESrEM8YHQE', 0, 11, '2019-12-27 10:39:00', '2019-12-27 10:39:00'),
@@ -128,20 +135,20 @@ INSERT INTO `contenidos` (`id`, `titulo`, `descripcion`, `pdf`, `video`, `url`, 
 (47, 'Método de Gauss - Ejemplo 1', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/XRcx8-2lLJI\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/XRcx8-2lLJI', 0, 15, '2019-12-27 10:47:36', '2019-12-27 10:47:36'),
 (48, 'Método de Gauss - Ejemplo 2', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/IbdQQVTKuhs\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/IbdQQVTKuhs', 0, 15, '2019-12-27 10:48:06', '2019-12-27 10:48:06'),
 (49, 'Método de Gauss - Ejemplo 3', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/SxT5Sbn8odE\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/SxT5Sbn8odE', 0, 15, '2019-12-27 10:49:03', '2019-12-27 10:49:03'),
-(50, 'Método de Cramer', NULL, 'MAT315/1577584032MAT315-metodoCramer.pdf', NULL, NULL, 0, 14, '2019-12-29 06:47:12', '2019-12-29 06:47:12'),
-(51, 'Método de Gauss', NULL, 'MAT315/1577584125MAT315-Metodogauss.pdf', NULL, NULL, 0, 15, '2019-12-29 06:48:45', '2019-12-29 06:48:45'),
-(52, 'Matrices', NULL, 'MAT315/1577662733MAT315-matrices1.pdf', NULL, NULL, 0, 36, '2019-12-30 04:38:53', '2019-12-30 04:38:53'),
-(53, 'Cordenadas Polares', NULL, 'MAT315/1577663415MAT315-CoordenadasPolares.pdf', NULL, NULL, 1, 37, '2019-12-30 04:50:15', '2020-01-11 03:33:00'),
-(54, 'Conversiones de coordenadas', NULL, 'MAT315/1577663607MAT315-ConversionDeCorordenadasPolares.pdf', NULL, NULL, 0, 38, '2019-12-30 04:53:27', '2019-12-30 04:53:27'),
-(55, 'Ecuaciones polares y rectangulares', NULL, 'MAT315/1577663881MAT315-ecuacionesPolaresRectangulares.pdf', NULL, NULL, 0, 39, '2019-12-30 04:58:01', '2019-12-30 04:58:01'),
-(56, 'Recta tangente en el polo', NULL, 'MAT315/1577664026MAT315-rectaTangenteEnElpolo.pdf', NULL, NULL, 0, 40, '2019-12-30 05:00:26', '2019-12-30 05:00:26'),
-(57, 'Gráfica de ecuaciones polares', NULL, 'MAT315/1577664284MAT315-graficaEcuacionesPolaresdf.pdf', NULL, NULL, 0, 41, '2019-12-30 05:04:44', '2019-12-30 05:04:44'),
-(58, 'Área en coordenadas polares', NULL, 'MAT315/1577664726MAT315-AreasEnCoordenadasPolares.pdf', NULL, NULL, 0, 42, '2019-12-30 05:12:06', '2019-12-30 05:12:06'),
+(50, 'Método de Cramer', NULL, '1577584032MAT315-metodoCramer.pdf', NULL, NULL, 0, 14, '2019-12-29 06:47:12', '2019-12-29 06:47:12'),
+(51, 'Método de Gauss', NULL, '1577584125MAT315-Metodogauss.pdf', NULL, NULL, 0, 15, '2019-12-29 06:48:45', '2019-12-29 06:48:45'),
+(52, 'Matrices', NULL, '1577662733MAT315-matrices1.pdf', NULL, NULL, 0, 36, '2019-12-30 04:38:53', '2019-12-30 04:38:53'),
+(53, 'Cordenadas Polares', NULL, '1577663415MAT315-CoordenadasPolares.pdf', NULL, NULL, 1, 37, '2019-12-30 04:50:15', '2020-01-11 03:33:00'),
+(54, 'Conversiones de coordenadas', NULL, '1577663607MAT315-ConversionDeCorordenadasPolares.pdf', NULL, NULL, 0, 38, '2019-12-30 04:53:27', '2019-12-30 04:53:27'),
+(55, 'Ecuaciones polares y rectangulares', NULL, '1577663881MAT315-ecuacionesPolaresRectangulares.pdf', NULL, NULL, 0, 39, '2019-12-30 04:58:01', '2019-12-30 04:58:01'),
+(56, 'Recta tangente en el polo', NULL, '1577664026MAT315-rectaTangenteEnElpolo.pdf', NULL, NULL, 0, 40, '2019-12-30 05:00:26', '2019-12-30 05:00:26'),
+(57, 'Gráfica de ecuaciones polares', NULL, '1577664284MAT315-graficaEcuacionesPolaresdf.pdf', NULL, NULL, 0, 41, '2019-12-30 05:04:44', '2019-12-30 05:04:44'),
+(58, 'Área en coordenadas polares', NULL, '1577664726MAT315-AreasEnCoordenadasPolares.pdf', NULL, NULL, 0, 42, '2019-12-30 05:12:06', '2019-12-30 05:12:06'),
 (60, 'Recta tangente en el polo (Video oficial UES)', NULL, NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/oYthAtTcOgA\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'https://youtu.be/oYthAtTcOgA', 0, 40, '2019-12-30 05:16:18', '2019-12-30 05:16:18'),
 (62, 'Gráfica de ecuaciones polares - Rosa (Video oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/WGvNjwku_sw', 'https://youtu.be/WGvNjwku_sw', 0, 41, '2019-12-30 05:56:51', '2019-12-30 05:56:51'),
 (63, 'Área en coordenadas polares Parte 1 (Video oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/6Io4ZcIoMD4', 'https://youtu.be/6Io4ZcIoMD4', 0, 42, '2019-12-30 05:59:10', '2019-12-30 05:59:10'),
 (64, 'Área en coordenadas polares Parte 2 (Video oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/12-fDnEEWX8', 'https://youtu.be/12-fDnEEWX8', 0, 42, '2019-12-30 05:59:57', '2019-12-30 05:59:57'),
-(65, 'Cordenadas Polares y graficas', NULL, 'MAT315/1577667734MAT315-CoordenadasPolaresYgraficas.pdf', NULL, NULL, 0, 43, '2019-12-30 06:02:14', '2019-12-30 06:02:14'),
+(65, 'Cordenadas Polares y graficas', NULL, '1577667734MAT315-CoordenadasPolaresYgraficas.pdf', NULL, NULL, 0, 43, '2019-12-30 06:02:14', '2019-12-30 06:02:14'),
 (66, 'Introducción a las coordenadas polares', 'Introducción a las coordenadas polares', NULL, 'https://www.youtube.com/embed/6d7wO3KExp8', 'https://youtu.be/6d7wO3KExp8', 0, 37, '2019-12-30 06:07:50', '2019-12-30 06:07:50'),
 (67, 'Plano polar 1', NULL, NULL, 'https://www.youtube.com/embed/qSi7Iaw3Ou4', 'https://youtu.be/qSi7Iaw3Ou4', 0, 37, '2019-12-30 06:12:15', '2019-12-30 06:12:15'),
 (68, 'Plano polar 2', NULL, NULL, 'https://www.youtube.com/embed/j6E3Qt1YHs4', 'https://youtu.be/j6E3Qt1YHs4', 0, 37, '2019-12-30 06:12:52', '2019-12-30 06:12:52'),
@@ -186,10 +193,10 @@ INSERT INTO `contenidos` (`id`, `titulo`, `descripcion`, `pdf`, `video`, `url`, 
 (107, 'Área encerrada por el gráfico en polares: r=cos2θ', NULL, NULL, 'https://www.youtube.com/embed/I-EcBPvWJ5I', 'https://youtu.be/I-EcBPvWJ5I', 0, 42, '2019-12-30 10:40:11', '2019-12-30 10:40:11'),
 (108, 'Área encerrada por el gráfico en polares: r=sen2θ', NULL, NULL, 'https://www.youtube.com/embed/i5WUO-oT_JQ', 'https://youtu.be/i5WUO-oT_JQ', 0, 42, '2019-12-30 10:41:40', '2019-12-30 10:41:40'),
 (109, 'Área encerrada por el gráfico en polares: r=sen3θ', NULL, NULL, 'https://www.youtube.com/embed/woD4FJksBg4', 'https://youtu.be/woD4FJksBg4', 0, 42, '2019-12-30 10:42:20', '2019-12-30 10:42:20'),
-(110, 'Sistema de coordenadas cartesianas', NULL, 'MAT315/1577813184MAT315-corrdenadasCartesianas.pdf', NULL, NULL, 0, 19, '2019-12-31 22:26:24', '2019-12-31 22:26:24'),
-(111, 'Sistema de coordenadas cilíndricas', NULL, 'MAT315/1577813214MAT315-corrdenadasCilindricas.pdf', NULL, NULL, 0, 20, '2019-12-31 22:26:54', '2019-12-31 22:26:54'),
-(112, 'Sistema de coordenadas esféricas', NULL, 'MAT315/1577813243MAT315-coordenadasEsfericas.pdf', NULL, NULL, 0, 21, '2019-12-31 22:27:23', '2019-12-31 22:27:23'),
-(113, 'Conversión de ecuaciones', NULL, 'MAT315/1577813273MAT315-conversionesEnSistemas.pdf', NULL, NULL, 0, 22, '2019-12-31 22:27:53', '2019-12-31 22:27:53'),
+(110, 'Sistema de coordenadas cartesianas', NULL, '1577813184MAT315-corrdenadasCartesianas.pdf', NULL, NULL, 0, 19, '2019-12-31 22:26:24', '2019-12-31 22:26:24'),
+(111, 'Sistema de coordenadas cilíndricas', NULL, '1577813214MAT315-corrdenadasCilindricas.pdf', NULL, NULL, 0, 20, '2019-12-31 22:26:54', '2019-12-31 22:26:54'),
+(112, 'Sistema de coordenadas esféricas', NULL, '1577813243MAT315-coordenadasEsfericas.pdf', NULL, NULL, 0, 21, '2019-12-31 22:27:23', '2019-12-31 22:27:23'),
+(113, 'Conversión de ecuaciones', NULL, '1577813273MAT315-conversionesEnSistemas.pdf', NULL, NULL, 0, 22, '2019-12-31 22:27:53', '2019-12-31 22:27:53'),
 (114, 'Puntos en tres dimensiones, con gráfica', NULL, NULL, 'https://www.youtube.com/embed/aevLlQfs9hY', 'https://youtu.be/aevLlQfs9hY', 0, 19, '2019-12-31 22:31:37', '2019-12-31 22:31:37'),
 (115, 'Coordenadas cilíndricas', NULL, NULL, 'https://www.youtube.com/embed/zJGS3ekkeKo', 'https://youtu.be/zJGS3ekkeKo', 0, 20, '2019-12-31 22:33:24', '2019-12-31 22:33:24'),
 (116, 'Coordenadas esféricas', NULL, NULL, 'https://www.youtube.com/embed/nx-ipu59jtU', 'https://youtu.be/nx-ipu59jtU', 0, 21, '2019-12-31 22:34:08', '2019-12-31 22:34:08'),
@@ -205,26 +212,26 @@ INSERT INTO `contenidos` (`id`, `titulo`, `descripcion`, `pdf`, `video`, `url`, 
 (127, 'Hiperboloide de una hoja (Video oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/AbEOlcRxNoU', 'https://youtu.be/AbEOlcRxNoU', 0, 24, '2019-12-31 23:17:27', '2019-12-31 23:17:27'),
 (128, 'Paraboloide de una hoja (Video oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/y3eiqwY2wPs', 'https://youtu.be/y3eiqwY2wPs', 0, 24, '2019-12-31 23:21:31', '2019-12-31 23:21:31'),
 (129, 'Solidos (Video oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/ZfInFuMSw6I', 'https://youtu.be/ZfInFuMSw6I', 0, 24, '2019-12-31 23:22:10', '2019-12-31 23:22:10'),
-(130, 'Rectas y planos', NULL, 'MAT315/1577816815MAT315-Rectasyplanos.pdf', NULL, NULL, 0, 23, '2019-12-31 23:26:55', '2019-12-31 23:26:55'),
-(131, 'Superficies', NULL, 'MAT315/1577816919MAT315-superficies.pdf', NULL, NULL, 0, 24, '2019-12-31 23:28:39', '2019-12-31 23:28:39'),
-(132, 'Funciones de dos variables', NULL, 'MAT315/1577817705MAT315-Funcionesdedosvariables.pdf', NULL, NULL, 0, 25, '2019-12-31 23:41:45', '2019-12-31 23:41:45'),
+(130, 'Rectas y planos', NULL, '1577816815MAT315-Rectasyplanos.pdf', NULL, NULL, 0, 23, '2019-12-31 23:26:55', '2019-12-31 23:26:55'),
+(131, 'Superficies', NULL, '1577816919MAT315-superficies.pdf', NULL, NULL, 0, 24, '2019-12-31 23:28:39', '2019-12-31 23:28:39'),
+(132, 'Funciones de dos variables', NULL, '1577817705MAT315-Funcionesdedosvariables.pdf', NULL, NULL, 0, 25, '2019-12-31 23:41:45', '2019-12-31 23:41:45'),
 (133, 'Dominio en funciones de dos o más variables', NULL, NULL, 'https://www.youtube.com/embed/wd56qQZAhx0', 'https://youtu.be/wd56qQZAhx0', 0, 25, '2019-12-31 23:43:11', '2019-12-31 23:43:11'),
 (134, 'Dominio, rango y gráfica de una función en varias variables', NULL, NULL, 'https://www.youtube.com/embed/b_Affw5ArMY', 'https://youtu.be/b_Affw5ArMY', 0, 25, '2019-12-31 23:45:12', '2019-12-31 23:45:12'),
-(135, 'Derivadas parciales', NULL, 'MAT315/1577818205MAT315-derivadasParciales.pdf', NULL, NULL, 0, 26, '2019-12-31 23:50:05', '2019-12-31 23:50:05'),
+(135, 'Derivadas parciales', NULL, '1577818205MAT315-derivadasParciales.pdf', NULL, NULL, 0, 26, '2019-12-31 23:50:05', '2019-12-31 23:50:05'),
 (136, 'Derivadas parciales, ejemplos resueltos', NULL, NULL, 'https://www.youtube.com/embed/XKgfHOaXhqs', 'https://youtu.be/XKgfHOaXhqs', 0, 26, '2019-12-31 23:53:40', '2019-12-31 23:53:40'),
 (137, 'Derivadas parciales, ejercicio 1', NULL, NULL, 'https://www.youtube.com/embed/tb00qQBYm48', 'https://youtu.be/tb00qQBYm48', 0, 26, '2019-12-31 23:55:27', '2019-12-31 23:55:27'),
 (138, 'Derivadas parciales, ejercicio 2', NULL, NULL, 'https://www.youtube.com/embed/Onx678fKpvs', 'https://youtu.be/Onx678fKpvs', 0, 26, '2019-12-31 23:56:31', '2019-12-31 23:56:31'),
 (139, 'Derivadas parciales de una función - Introducción', NULL, NULL, 'https://www.youtube.com/embed/zxEXPpMVeRk', 'https://youtu.be/zxEXPpMVeRk', 0, 26, '2019-12-31 23:57:49', '2019-12-31 23:57:49'),
-(140, 'Regla de la cadena', NULL, 'MAT315/1577819019MAT315-reglaCadena.pdf', NULL, NULL, 0, 28, '2020-01-01 00:03:39', '2020-01-01 00:03:39'),
+(140, 'Regla de la cadena', NULL, '1577819019MAT315-reglaCadena.pdf', NULL, NULL, 0, 28, '2020-01-01 00:03:39', '2020-01-01 00:03:39'),
 (141, 'Calculo de derivadas parciales - regla de la cadena', NULL, NULL, 'https://www.youtube.com/embed/WiGaKy_Aaeg', 'https://youtu.be/WiGaKy_Aaeg', 0, 28, '2020-01-01 00:06:49', '2020-01-01 00:06:49'),
 (142, 'Derivadas parciales - regla de la cadena Ejercicio 1', NULL, NULL, 'https://www.youtube.com/embed/JSBZmMBN3wU', 'https://youtu.be/JSBZmMBN3wU', 0, 28, '2020-01-01 00:10:15', '2020-01-01 00:10:15'),
-(143, 'Derivada direccional y gradiente', NULL, 'MAT315/1577819615MAT315-Derivadadireccionalygradiente.pdf', NULL, NULL, 0, 29, '2020-01-01 00:13:35', '2020-01-01 00:13:35'),
+(143, 'Derivada direccional y gradiente', NULL, '1577819615MAT315-Derivadadireccionalygradiente.pdf', NULL, NULL, 0, 29, '2020-01-01 00:13:35', '2020-01-01 00:13:35'),
 (144, 'Vector direccional y gradiente ejercicio 1', NULL, NULL, 'https://www.youtube.com/embed/9HcJqB-bdE8', 'https://youtu.be/9HcJqB-bdE8', 0, 29, '2020-01-01 00:15:31', '2020-01-01 00:15:31'),
 (145, 'Vector direccional y gradiente ejercicio 2', NULL, NULL, 'https://www.youtube.com/embed/Vnbi1S7x6Qg', 'https://youtu.be/Vnbi1S7x6Qg', 0, 29, '2020-01-01 00:15:49', '2020-01-01 00:15:49'),
-(146, 'Extremos de funciones de dos variables', NULL, 'MAT315/1577820165MAT315-ExtremosDeFuncionesDeDosVariables.pdf', NULL, NULL, 0, 30, '2020-01-01 00:22:45', '2020-01-01 00:22:45'),
+(146, 'Extremos de funciones de dos variables', NULL, '1577820165MAT315-ExtremosDeFuncionesDeDosVariables.pdf', NULL, NULL, 0, 30, '2020-01-01 00:22:45', '2020-01-01 00:22:45'),
 (147, 'Derivadas parciales (Video oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/2jkXK7kdUwI', 'https://youtu.be/2jkXK7kdUwI', 0, 26, '2020-01-02 05:39:36', '2020-01-02 05:39:36'),
 (148, 'Puntos críticos en una función de dos variables', NULL, NULL, 'https://www.youtube.com/embed/dVBWSsob7h8', 'https://youtu.be/dVBWSsob7h8', 0, 30, '2020-01-02 05:41:54', '2020-01-02 05:41:54'),
-(149, 'Integrales dobles', 'Integrales dobles en coordenadas rectangulares', 'MAT315/1578072081MAT315-IntegralesDobles.pdf', NULL, NULL, 1, 32, '2020-01-03 22:21:21', '2020-01-10 23:12:26'),
+(149, 'Integrales dobles', 'Integrales dobles en coordenadas rectangulares', '1578072081MAT315-IntegralesDobles.pdf', NULL, NULL, 1, 32, '2020-01-03 22:21:21', '2020-01-10 23:12:26'),
 (150, 'Integral doble - ejercicio 1', NULL, NULL, 'https://www.youtube.com/embed/eu3CNA47KX4', 'https://youtu.be/eu3CNA47KX4', 0, 32, '2020-01-03 22:23:27', '2020-01-03 22:23:27'),
 (151, 'Integral doble - ejercicio 2', NULL, NULL, 'https://www.youtube.com/embed/B7q-096CrK0', 'https://youtu.be/B7q-096CrK0', 0, 32, '2020-01-03 22:24:32', '2020-01-03 22:24:32'),
 (152, 'Integral doble - ejercicio 3', NULL, NULL, 'https://www.youtube.com/embed/BjalS0fvxL0', 'https://youtu.be/BjalS0fvxL0', 0, 32, '2020-01-03 22:26:10', '2020-01-03 22:26:10'),
@@ -233,12 +240,12 @@ INSERT INTO `contenidos` (`id`, `titulo`, `descripcion`, `pdf`, `video`, `url`, 
 (155, 'Integral doble - ejercicio 6', NULL, NULL, 'https://www.youtube.com/embed/DOT0AxTy0jc', 'https://youtu.be/DOT0AxTy0jc', 0, 32, '2020-01-03 22:28:30', '2020-01-03 22:28:30'),
 (156, 'Integral doble - ejercicio 7', NULL, NULL, 'https://www.youtube.com/embed/34mdJudRBQA', 'https://youtu.be/34mdJudRBQA', 0, 32, '2020-01-03 22:29:53', '2020-01-03 22:29:53'),
 (157, 'Integral doble - ejercicio 8', NULL, NULL, 'https://www.youtube.com/embed/T4vNOJudtS4', 'https://youtu.be/T4vNOJudtS4', 0, 32, '2020-01-03 22:30:23', '2020-01-03 22:30:23'),
-(158, 'Teorema de Fubini', NULL, 'MAT315/1578073091MAT315-teoremaDeFubini.pdf', NULL, NULL, 0, 32, '2020-01-03 22:38:11', '2020-01-03 22:38:11'),
+(158, 'Teorema de Fubini', NULL, '1578073091MAT315-teoremaDeFubini.pdf', NULL, NULL, 0, 32, '2020-01-03 22:38:11', '2020-01-03 22:38:11'),
 (159, 'Integral doble con cambio en el orden de integración', NULL, NULL, 'https://www.youtube.com/embed/k925t7nx0aM', 'https://youtu.be/k925t7nx0aM', 0, 32, '2020-01-03 22:51:58', '2020-01-03 22:51:58'),
-(160, 'Integrales dobles en coordenadas polares', NULL, 'MAT315/1578074088MAT315-IntegralesDoblesCoordenadasPolares.pdf', NULL, NULL, 0, 33, '2020-01-03 22:54:48', '2020-01-03 22:54:48'),
+(160, 'Integrales dobles en coordenadas polares', NULL, '1578074088MAT315-IntegralesDoblesCoordenadasPolares.pdf', NULL, NULL, 0, 33, '2020-01-03 22:54:48', '2020-01-03 22:54:48'),
 (161, 'Volumen con una integral doble en coordenadas polares', NULL, NULL, 'https://www.youtube.com/embed/xh2xtYfnVTg', 'https://youtu.be/xh2xtYfnVTg', 0, 33, '2020-01-03 22:56:52', '2020-01-03 22:56:52'),
 (162, 'Integrales dobles en coordenadas polares', NULL, NULL, 'https://www.youtube.com/embed/2hR5XKvEwrU', 'https://youtu.be/2hR5XKvEwrU', 0, 33, '2020-01-03 22:57:48', '2020-01-03 22:57:48'),
-(163, 'Integrales triples y aplicaciones', NULL, 'MAT315/1578074448MAT315-IntegralesTriplesYaplicaciones.pdf', NULL, NULL, 0, 34, '2020-01-03 23:00:48', '2020-01-03 23:00:48'),
+(163, 'Integrales triples y aplicaciones', NULL, '1578074448MAT315-IntegralesTriplesYaplicaciones.pdf', NULL, NULL, 0, 34, '2020-01-03 23:00:48', '2020-01-03 23:00:48'),
 (164, 'Integrales triples', NULL, NULL, 'https://www.youtube.com/embed/k4_ecaEFOZg', 'https://youtu.be/k4_ecaEFOZg', 0, 34, '2020-01-03 23:02:15', '2020-01-03 23:02:15'),
 (165, 'Integrales triples - Ejercicio 1', NULL, NULL, 'https://www.youtube.com/embed/ST4CBQXgA8Q', 'https://youtu.be/ST4CBQXgA8Q', 0, 34, '2020-01-03 23:03:17', '2020-01-03 23:03:17'),
 (166, 'Integrales triples - Ejercicio 2', NULL, NULL, 'https://www.youtube.com/embed/XxrmK4Ezu14', 'https://youtu.be/XxrmK4Ezu14', 0, 34, '2020-01-03 23:03:36', '2020-01-03 23:03:36'),
@@ -247,20 +254,20 @@ INSERT INTO `contenidos` (`id`, `titulo`, `descripcion`, `pdf`, `video`, `url`, 
 (169, 'calculo de volumen - ejercicio 2', NULL, NULL, 'https://www.youtube.com/embed/eaktrjTlS58', 'https://youtu.be/eaktrjTlS58', 0, 34, '2020-01-03 23:15:09', '2020-01-03 23:15:09'),
 (170, 'calculo de volumen - ejercicio 3', NULL, NULL, 'https://www.youtube.com/embed/xMB6MdfTQ7Y', 'https://youtu.be/xMB6MdfTQ7Y', 0, 34, '2020-01-03 23:15:38', '2020-01-03 23:15:38'),
 (171, 'calculo de volumen - ejercicio 4', NULL, NULL, 'https://www.youtube.com/embed/wG8oF5eMqfI', 'https://youtu.be/wG8oF5eMqfI', 0, 34, '2020-01-03 23:16:12', '2020-01-03 23:16:12'),
-(172, 'Integrales triples en coordenadas cilíndricas y esféricas', NULL, 'MAT315/1578075632MAT315-IntegralesTriplesCilindricasEsfericas.pdf', NULL, NULL, 0, 35, '2020-01-03 23:20:32', '2020-01-03 23:20:32'),
+(172, 'Integrales triples en coordenadas cilíndricas y esféricas', NULL, '1578075632MAT315-IntegralesTriplesCilindricasEsfericas.pdf', NULL, NULL, 0, 35, '2020-01-03 23:20:32', '2020-01-03 23:20:32'),
 (173, 'Integrales triples: Coordenadas cilíndricas', NULL, NULL, 'https://www.youtube.com/embed/sOEfIeTAbqQ', 'https://youtu.be/sOEfIeTAbqQ', 0, 35, '2020-01-03 23:22:35', '2020-01-03 23:22:35'),
 (174, 'Integrales triples: Coordenadas esfericas', NULL, NULL, 'https://www.youtube.com/embed/DZ82BzA-_a0', 'https://youtu.be/DZ82BzA-_a0', 0, 35, '2020-01-03 23:23:17', '2020-01-03 23:23:17'),
 (175, 'Integrales triples: Coordenadas cilíndricas (Video oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/z5_fCCIHZBg', 'https://youtu.be/z5_fCCIHZBg', 0, 35, '2020-01-03 23:25:00', '2020-01-03 23:25:00'),
-(176, 'Unidad 1 - Matrices (Oficial UES)', NULL, 'MAT315/1578076548MAT315-Unidad1-Matrices2019.pdf', NULL, NULL, 0, 36, '2020-01-03 23:35:48', '2020-01-03 23:35:48'),
-(177, 'Unidad 2 - Coordenadas Polares (Oficial UES)', NULL, 'MAT315/1578076773MAT315-unidad2-coordenadasPolares2019.pdf', NULL, NULL, 0, 43, '2020-01-03 23:39:33', '2020-01-03 23:39:33'),
-(178, 'Unidad 4 - Geometría en el espacio (Oficial UES)', NULL, 'MAT315/1578076964MAT315-unidad3-geometriaEnElEspacio2019.pdf', NULL, NULL, 0, 45, '2020-01-03 23:42:44', '2020-01-03 23:42:44'),
-(179, 'Unidad 5 - Funciones de varias variables cálculo diferencial (Oficial UES)', NULL, 'MAT315/MAT315/1578077539MAT315-unidad5-calculoDiferencialVariasVariables2019.pdf', NULL, NULL, 0, 46, '2020-01-03 23:52:19', '2020-01-03 23:52:19'),
-(180, 'Unidad 6 - Funciones de varias variables cálculo integral (Oficial UES)', NULL, 'MAT315/1578077636MAT315-unidad6-calculoIntegralVariasVariables2019.pdf', NULL, NULL, 0, 47, '2020-01-03 23:53:56', '2020-01-03 23:53:56'),
-(181, 'Guía discusión 1 - Matrices y determinantes 2019', NULL, 'MAT315/1578078371MAT315-guiaDiscusion1-matrices.pdf', NULL, NULL, 1, 36, '2020-01-04 00:06:11', '2020-01-11 01:54:16'),
-(182, 'Guía discusión 2 - Coordenadas polares 2019', NULL, 'MAT315/1578078514MAT315-guiaDiscusion2-coordenadasPolares2019.pdf', NULL, NULL, 0, 43, '2020-01-04 00:08:34', '2020-01-04 00:08:34'),
-(183, 'Guía discusión 3 - Geometría en el espacio 2019', NULL, 'MAT315/1578078709MAT315-guiaDiscusion3-geometriaEnElEspacio2019.pdf', NULL, NULL, 1, 45, '2020-01-04 00:11:49', '2020-01-10 14:34:46'),
-(184, 'Guía discusión 4 - Cálculo diferencial de varias variables 2019', NULL, 'MAT315/1578078840MAT315-guiaDiscusion4-calculoDiferencialVariasVariables2019.pdf', NULL, NULL, 0, 46, '2020-01-04 00:14:00', '2020-01-04 00:14:00'),
-(185, 'Guía discusión 5 - Cálculo integral de varias variables 2019', NULL, 'MAT315/1578078935MAT315-guiaDiscusion5-calculoIntegralVariasVariables2019.pdf', NULL, NULL, 0, 47, '2020-01-04 00:15:35', '2020-01-04 00:15:35'),
+(176, 'Unidad 1 - Matrices (Oficial UES)', NULL, '1578076548MAT315-Unidad1-Matrices2019.pdf', NULL, NULL, 0, 36, '2020-01-03 23:35:48', '2020-01-03 23:35:48'),
+(177, 'Unidad 2 - Coordenadas Polares (Oficial UES)', NULL, '1578076773MAT315-unidad2-coordenadasPolares2019.pdf', NULL, NULL, 0, 43, '2020-01-03 23:39:33', '2020-01-03 23:39:33'),
+(178, 'Unidad 4 - Geometría en el espacio (Oficial UES)', NULL, '1578076964MAT315-unidad3-geometriaEnElEspacio2019.pdf', NULL, NULL, 0, 45, '2020-01-03 23:42:44', '2020-01-03 23:42:44'),
+(179, 'Unidad 5 - Funciones de varias variables cálculo diferencial (Oficial UES)', NULL, '1578077539MAT315-unidad5-calculoDiferencialVariasVariables2019.pdf', NULL, NULL, 0, 46, '2020-01-03 23:52:19', '2020-01-03 23:52:19'),
+(180, 'Unidad 6 - Funciones de varias variables cálculo integral (Oficial UES)', NULL, '1578077636MAT315-unidad6-calculoIntegralVariasVariables2019.pdf', NULL, NULL, 0, 47, '2020-01-03 23:53:56', '2020-01-03 23:53:56'),
+(181, 'Guía discusión 1 - Matrices y determinantes 2019', NULL, '1578078371MAT315-guiaDiscusion1-matrices.pdf', NULL, NULL, 1, 36, '2020-01-04 00:06:11', '2020-01-11 01:54:16'),
+(182, 'Guía discusión 2 - Coordenadas polares 2019', NULL, '1578078514MAT315-guiaDiscusion2-coordenadasPolares2019.pdf', NULL, NULL, 0, 43, '2020-01-04 00:08:34', '2020-01-04 00:08:34'),
+(183, 'Guía discusión 3 - Geometría en el espacio 2019', NULL, '1578078709MAT315-guiaDiscusion3-geometriaEnElEspacio2019.pdf', NULL, NULL, 1, 45, '2020-01-04 00:11:49', '2020-01-10 14:34:46'),
+(184, 'Guía discusión 4 - Cálculo diferencial de varias variables 2019', NULL, '1578078840MAT315-guiaDiscusion4-calculoDiferencialVariasVariables2019.pdf', NULL, NULL, 0, 46, '2020-01-04 00:14:00', '2020-01-04 00:14:00'),
+(185, 'Guía discusión 5 - Cálculo integral de varias variables 2019', NULL, '1578078935MAT315-guiaDiscusion5-calculoIntegralVariasVariables2019.pdf', NULL, NULL, 0, 47, '2020-01-04 00:15:35', '2020-01-04 00:15:35'),
 (186, 'Fluidos, densidad y peso especifico (Video oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/loP6FCfxs_g', 'https://youtu.be/loP6FCfxs_g', 0, 61, '2020-01-04 22:32:11', '2020-01-04 22:32:11'),
 (187, 'Ecuación fundamental de la hidrostática', NULL, NULL, 'https://www.youtube.com/embed/M5RWKv5up0A', 'https://youtu.be/M5RWKv5up0A', 1, 61, '2020-01-04 22:33:15', '2020-01-11 00:44:33'),
 (188, 'Dos Problemas, ventana y campana de buceo', NULL, NULL, 'https://www.youtube.com/embed/iDWqI2nuFVg', 'https://youtu.be/iDWqI2nuFVg', 0, 61, '2020-01-04 22:54:29', '2020-01-04 22:54:29'),
@@ -306,14 +313,14 @@ INSERT INTO `contenidos` (`id`, `titulo`, `descripcion`, `pdf`, `video`, `url`, 
 (231, 'Principio de Arquimedes - ejercicio 1', NULL, NULL, 'https://youtu.be/Mozv_nQqAeA', 'https://www.youtube.com/embed/Mozv_nQqAeA', 0, 64, '2020-01-04 23:41:47', '2020-01-04 23:41:47'),
 (232, 'Principio de Arquimedes - ejercicio 2', NULL, NULL, 'https://www.youtube.com/embed/cae__ydEShc', 'https://youtu.be/cae__ydEShc', 0, 64, '2020-01-04 23:42:04', '2020-01-04 23:42:04'),
 (233, 'Principio de Arquimedes - ejercicio 3', NULL, NULL, 'https://www.youtube.com/embed/oyWE8qutgmo', 'https://youtu.be/oyWE8qutgmo', 0, 64, '2020-01-04 23:42:46', '2020-01-04 23:42:46'),
-(234, 'Principio de Arquimedes - ejercicio 4', NULL, NULL, 'https://www.youtube.com/embed/scO9JARtW4s', 'https://youtu.be/scO9JARtW4s', 0, 64, '2020-01-04 23:44:33', '2020-01-04 23:44:33');
+(234, 'Principio de Arquimedes - ejercicio 4', NULL, NULL, 'https://www.youtube.com/embed/scO9JARtW4s', 'https://youtu.be/scO9JARtW4s', 0, 64, '2020-01-04 23:44:33', '2020-01-04 23:44:33'),
+(235, 'Principio de Arquimedes - ejercicio 5', NULL, NULL, 'https://www.youtube.com/embed/-TdyQjiOAII', 'https://youtu.be/-TdyQjiOAII', 0, 64, '2020-01-04 23:45:06', '2020-01-04 23:45:06');
 INSERT INTO `contenidos` (`id`, `titulo`, `descripcion`, `pdf`, `video`, `url`, `vistas`, `temario_id`, `created_at`, `updated_at`) VALUES
-(235, 'Principio de Arquimedes - ejercicio 5', NULL, NULL, 'https://www.youtube.com/embed/-TdyQjiOAII', 'https://youtu.be/-TdyQjiOAII', 0, 64, '2020-01-04 23:45:06', '2020-01-04 23:45:06'),
 (236, 'Problema - Principio de Arquímedes y Empuje en un globo aerostático', NULL, NULL, 'https://www.youtube.com/embed/Vk1kTPsywkY', 'https://youtu.be/Vk1kTPsywkY', 0, 64, '2020-01-04 23:46:08', '2020-01-04 23:46:08'),
 (237, 'Problema - Principio de Arquímedes y fuerza de empuje', NULL, NULL, 'https://www.youtube.com/embed/8o5g2lcTZ88', 'https://youtu.be/8o5g2lcTZ88', 0, 64, '2020-01-04 23:46:48', '2020-01-04 23:46:48'),
-(238, 'Presión y densidad', NULL, 'MAT315/1578163808FIR215-PresionDensidad.pdf', NULL, NULL, 0, 62, '2020-01-04 23:50:08', '2020-01-04 23:50:08'),
-(239, 'Estática de fluidos', NULL, 'FIR215/1578164019FIR215-estaticaFluidos.pdf', NULL, NULL, 0, 66, '2020-01-04 23:53:39', '2020-01-04 23:53:39'),
-(240, 'Estática de fluidos	con ejemplos', NULL, 'FIR215/1578164095FIR215-estaticaFluidosConEjemplos.pdf', NULL, NULL, 0, 66, '2020-01-04 23:54:55', '2020-01-04 23:54:55'),
+(238, 'Presión y densidad', NULL, '1578163808FIR215-PresionDensidad.pdf', NULL, NULL, 0, 62, '2020-01-04 23:50:08', '2020-01-04 23:50:08'),
+(239, 'Estática de fluidos', NULL, '1578164019FIR215-estaticaFluidos.pdf', NULL, NULL, 0, 66, '2020-01-04 23:53:39', '2020-01-04 23:53:39'),
+(240, 'Estática de fluidos	con ejemplos', NULL, '1578164095FIR215-estaticaFluidosConEjemplos.pdf', NULL, NULL, 0, 66, '2020-01-04 23:54:55', '2020-01-04 23:54:55'),
 (241, 'Clase 1: Ecuación fundamental de la hidrostática', 'Se introduce a la estática de fluidos, se comienza definiendo que es un fluido , conceptos básicos como densidad, presión, se define la presión hidrostática, luego se deduce la ecuación fundamental de la hidrostática, para terminar definiendo la presión absoluta y la presión manométrica.', NULL, 'https://youtu.be/M5RWKv5up0A', 'https://www.youtube.com/embed/M5RWKv5up0A', 0, 65, '2020-01-04 23:57:30', '2020-01-04 23:57:30'),
 (242, 'Clase 2: Dos Problemas, ventana y campana de buceo.', 'Una ventana de oficina experimenta una fuerza neta debido a la diferencia de presión, se pide encontrar esta fuerza neta, luego se tiene una campana de buceo que se sumerge en el mar cierta profundidad y se pide encontrar la fuerza neta sobre la ventanilla de observación.', NULL, 'https://www.youtube.com/embed/iDWqI2nuFVg', 'https://youtu.be/iDWqI2nuFVg', 0, 65, '2020-01-04 23:57:59', '2020-01-04 23:57:59'),
 (243, 'Clase 3: Problema 3, caja al vacío, hemisferios de Magdeburgo.', 'El problema trata sobre una caja bien cerrada, a la que se le hace en su interior un vacío parcial, se conoce la fuerza necesaria para abrir la caja y se pregunta cual es la presión adentro, luego se realiza una practica demostrativa con los hemisferios de Magdeburgo.', NULL, 'https://www.youtube.com/embed/uI0TM147jD0', 'https://youtu.be/uI0TM147jD0', 0, 65, '2020-01-04 23:58:33', '2020-01-04 23:58:33'),
@@ -323,7 +330,7 @@ INSERT INTO `contenidos` (`id`, `titulo`, `descripcion`, `pdf`, `video`, `url`, 
 (247, 'Clase 7: Bloque bajo tensión y niños en una balsa.', 'Se realizan dos problemas donde un bloque esta sumergido en agua y cuelga de una cuerda se pide encontrar la tensión de la cuerda y mas....luego tres niños desean armar una balsa con troncos de madera y la pregunta es cuantos troncos se necesitan para que estén al nivel del agua.', NULL, 'https://www.youtube.com/embed/dPINbGr1pEI', 'https://youtu.be/dPINbGr1pEI', 0, 65, '2020-01-05 00:00:49', '2020-01-05 00:00:49'),
 (248, 'Clase 8: Bloque sumergido se carga con plomo.', 'En este problema se tiene un bloque cúbico de madera que se coloca en agua y se sumerge un cuarto de su arista, se pide encontrar su densidad, luego se le coloca una masa de plomo en la parte superior y se hunde tres cuartos de su arista se pide encontrar la masa de plomo, a continuación se coloca otra masa de plomo en la parte inferior del cubo para que se sumerja también tres cuartos nos piden encontrar el valor de esta masa de plomo.', NULL, 'https://www.youtube.com/embed/x3npGoubrAk', 'https://youtu.be/x3npGoubrAk', 0, 65, '2020-01-05 00:01:19', '2020-01-05 00:01:19'),
 (249, 'Clase 9: Problema; Barra sumergida y atada a una cuerda', 'En este problema se tiene un barra sumergida en agua en un depósito, el extremo de la barra sumergida se le ata una cuerda la cual se ancla al fondo del depósito, si la barra esta sumergida tres cuartos de su longitud, nos piden encontrar la tensión de la cuerda y la densidad de la barra.', NULL, 'https://www.youtube.com/embed/zgZH4FBK9nA', 'https://youtu.be/zgZH4FBK9nA', 0, 65, '2020-01-05 00:01:51', '2020-01-05 00:01:51'),
-(250, 'Guía discusión 1 - Estática de los fluidos 2017', 'Guía de discusión del año 2017', 'FIR215/1578176627FIR215-DISCUSIÓN1-ESTÁTICA-DE-LOS-FLUIDOS2017.pdf', NULL, NULL, 1, 66, '2020-01-05 03:23:47', '2020-01-11 01:55:06'),
+(250, 'Guía discusión 1 - Estática de los fluidos 2017', 'Guía de discusión del año 2017', '1578176627FIR215-DISCUSIÓN1-ESTÁTICA-DE-LOS-FLUIDOS2017.pdf', NULL, NULL, 1, 66, '2020-01-05 03:23:47', '2020-01-11 01:55:06'),
 (251, 'Conceptos generales de fluidos parte 1 (Vídeo oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/6MQs9OvEsnc', 'https://youtu.be/6MQs9OvEsnc', 0, 67, '2020-01-05 03:30:41', '2020-01-05 03:30:41'),
 (252, 'Conceptos generales de fluidos parte 2 (Vídeo oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/gt_rWZ7amCs', 'https://youtu.be/gt_rWZ7amCs', 0, 67, '2020-01-05 03:31:09', '2020-01-05 03:31:09'),
 (253, 'Ecuación de Continuidad y Ley de Caudal', NULL, NULL, 'https://www.youtube.com/embed/RTwrgIxFKS8', 'https://youtu.be/RTwrgIxFKS8', 0, 67, '2020-01-05 03:35:28', '2020-01-05 03:35:28'),
@@ -350,19 +357,19 @@ INSERT INTO `contenidos` (`id`, `titulo`, `descripcion`, `pdf`, `video`, `url`, 
 (274, 'Clase 5: problema 3: Tanque lleno de agua y con un agujero', 'Se tiene un tanque lleno de agua, al cual se le perfora un pequeño agujero, se pide encontrar la rapidez con que sale el líquido por el orificio, en base a esto se hace un comentario del teorema de Torricelli, se pregunta sobre el alcance del chorro medido desde la base, luego se pregunta donde hay que perforar otro agujero para que el alcance sea máximo, y donde hay que perforar otro agujero para que el alcance sea igual al del primer chorro.', NULL, 'https://www.youtube.com/embed/iYEQYkVSfjI', 'https://youtu.be/iYEQYkVSfjI', 0, 70, '2020-01-05 04:20:31', '2020-01-05 04:20:31'),
 (275, 'Clase 6: Tubo de Venturi', 'Se tiene un tubo o medidor de Venturi se brinda las áreas en la parte ancha y angosta como el caudal, se pide encontrar la velocidad tanto en la parte ancha como angosta , la diferencia de presión en esos puntos y la diferencia de altura en el tubo en U que contiene mercurio.', NULL, 'https://www.youtube.com/embed/wBP18ghl6NM', 'https://youtu.be/wBP18ghl6NM', 0, 70, '2020-01-05 04:20:56', '2020-01-05 04:20:56'),
 (276, 'Clase 7: Problema 4: El sifón, como funciona.', 'Se muestra el funcionamiento del sifón, y en base a los datos que nos dan, nos piden encontrar la velocidad de salida del agua, la presión en cierto punto, y a que altura hay que elevar la manguera para que ya no fluya agua.', NULL, 'https://www.youtube.com/embed/kLbbEMCF9a8', 'https://youtu.be/kLbbEMCF9a8', 0, 70, '2020-01-05 04:21:20', '2020-01-05 04:21:20'),
-(277, 'Guía discusión 2 - Dinámica de los fluidos 2017', 'Dinámica de los fluidos 2017', 'FIR215/1578180270FIR215-DISCUSIÓN2-DINAMICA-DE-LOS-FLUIDOS2017.pdf', NULL, NULL, 0, 71, '2020-01-05 04:24:30', '2020-01-05 04:24:30'),
-(278, 'Dinámica de los fluidos', NULL, 'FIR215/1578180354FIR215-dinamica-fluidos.pdf', NULL, NULL, 1, 71, '2020-01-05 04:25:54', '2020-01-11 01:56:27'),
-(279, 'Dinámica de los fluidos 2', NULL, 'FIR215/1578180458FIR215-dinamica-fluidos2.pdf', NULL, NULL, 0, 71, '2020-01-05 04:27:38', '2020-01-05 04:27:38'),
-(280, 'Unidad 1 - HDP115', NULL, 'HDP115/1578185642HDP115-unidad1.pdf', NULL, NULL, 4, 72, '2020-01-05 05:54:02', '2020-01-11 03:30:00'),
+(277, 'Guía discusión 2 - Dinámica de los fluidos 2017', 'Dinámica de los fluidos 2017', '1578180270FIR215-DISCUSIÓN2-DINAMICA-DE-LOS-FLUIDOS2017.pdf', NULL, NULL, 0, 71, '2020-01-05 04:24:30', '2020-01-05 04:24:30'),
+(278, 'Dinámica de los fluidos', NULL, '1578180354FIR215-dinamica-fluidos.pdf', NULL, NULL, 1, 71, '2020-01-05 04:25:54', '2020-01-11 01:56:27'),
+(279, 'Dinámica de los fluidos 2', NULL, '1578180458FIR215-dinamica-fluidos2.pdf', NULL, NULL, 0, 71, '2020-01-05 04:27:38', '2020-01-05 04:27:38'),
+(280, 'Unidad 1 - HDP115', NULL, '1578185642HDP115-unidad1.pdf', NULL, NULL, 4, 72, '2020-01-05 05:54:02', '2020-01-11 03:30:00'),
 (281, 'Evolución de las herramientas informáticas (Video Oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/EmyeekLfmsw', 'https://youtu.be/EmyeekLfmsw', 2, 72, '2020-01-05 05:54:42', '2020-01-11 03:23:10'),
 (282, 'Uso de astah community (Video Oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/B-0Zlp8_faQ', 'https://youtu.be/B-0Zlp8_faQ', 1, 72, '2020-01-05 05:55:30', '2020-01-09 23:20:56'),
-(283, 'Unidad 2 - HDP115', NULL, 'HDP115/1578185957HDP115-unidad2.pdf', NULL, NULL, 0, 73, '2020-01-05 05:59:17', '2020-01-05 05:59:17'),
+(283, 'Unidad 2 - HDP115', NULL, '1578185957HDP115-unidad2.pdf', NULL, NULL, 0, 73, '2020-01-05 05:59:17', '2020-01-05 05:59:17'),
 (284, 'Programación de proyectos (Video Oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/dsqR846b3Z8', 'https://youtu.be/dsqR846b3Z8', 0, 73, '2020-01-05 05:59:58', '2020-01-05 05:59:58'),
 (285, 'Herramientas de prototipado (Video Oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/14lYS7CzxEI', 'https://youtu.be/14lYS7CzxEI', 0, 73, '2020-01-05 06:00:34', '2020-01-05 06:00:34'),
-(286, 'Unidad 3- POO y UML - HDP115', NULL, 'HDP115/1578186286HDp115-unidad3-POO-UML.pdf', NULL, NULL, 0, 74, '2020-01-05 06:04:46', '2020-01-05 06:04:46'),
-(287, 'Unidad 3-Modelado y prototipos - HDP115', NULL, 'HDP115/1578186411HDP115-unidad3-modeladoPrototipos.pdf', NULL, NULL, 0, 75, '2020-01-05 06:06:51', '2020-01-05 06:06:51'),
-(288, 'Unidad 3 - UML 2.0 y Patrones de diseño - HDP115', NULL, 'HDP115/1578186656HDP115-unidad3-patronesDiseno.pdf', NULL, NULL, 0, 76, '2020-01-05 06:10:56', '2020-01-05 06:10:56'),
-(289, 'Unidad 3 - Diseño orientado a objetos - HDP115', NULL, 'HDP115/1578186807HDP115-unidad3-disenoObjetos.pdf', NULL, NULL, 0, 77, '2020-01-05 06:13:27', '2020-01-05 06:13:27'),
+(286, 'Unidad 3- POO y UML - HDP115', NULL, '1578186286HDp115-unidad3-POO-UML.pdf', NULL, NULL, 0, 74, '2020-01-05 06:04:46', '2020-01-05 06:04:46'),
+(287, 'Unidad 3-Modelado y prototipos - HDP115', NULL, '1578186411HDP115-unidad3-modeladoPrototipos.pdf', NULL, NULL, 0, 75, '2020-01-05 06:06:51', '2020-01-05 06:06:51'),
+(288, 'Unidad 3 - UML 2.0 y Patrones de diseño - HDP115', NULL, '1578186656HDP115-unidad3-patronesDiseno.pdf', NULL, NULL, 0, 76, '2020-01-05 06:10:56', '2020-01-05 06:10:56'),
+(289, 'Unidad 3 - Diseño orientado a objetos - HDP115', NULL, '1578186807HDP115-unidad3-disenoObjetos.pdf', NULL, NULL, 0, 77, '2020-01-05 06:13:27', '2020-01-05 06:13:27'),
 (290, 'Introducción a la POO parte 1 (Video Oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/CKZ3e6IK-F4', 'https://youtu.be/CKZ3e6IK-F4', 0, 74, '2020-01-05 06:15:29', '2020-01-05 06:15:29'),
 (291, 'Introducción a la POO parte 2 (Video Oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/fNy5qmn3DBU', 'https://youtu.be/fNy5qmn3DBU', 0, 74, '2020-01-05 06:16:01', '2020-01-05 06:16:01'),
 (292, 'Creación de artefactos OO (Video oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/b-rk4jnLIXs', 'https://youtu.be/b-rk4jnLIXs', 0, 74, '2020-01-05 06:17:20', '2020-01-05 06:17:20'),
@@ -373,13 +380,13 @@ INSERT INTO `contenidos` (`id`, `titulo`, `descripcion`, `pdf`, `video`, `url`, 
 (297, 'Uso de Power Designer (Video Oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/kDVya6YwJuI', 'https://youtu.be/kDVya6YwJuI', 0, 77, '2020-01-05 06:22:30', '2020-01-05 06:22:30'),
 (298, 'Patrones de diseño (Video oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/k6K202ihF6E', 'https://youtu.be/k6K202ihF6E', 0, 76, '2020-01-05 06:24:25', '2020-01-05 06:24:25'),
 (299, 'Implementacion del patrón MVC (Video oficial UES)', NULL, NULL, 'https://www.youtube.com/embed/AXNz7Ic-YNo', 'https://youtu.be/AXNz7Ic-YNo', 0, 76, '2020-01-05 06:24:53', '2020-01-05 06:24:53'),
-(300, 'Sistemas gestores de bases de datos y más', 'Sistemas gestores de bases de datos', 'HDP115/1578188745HDP115-unidad4-gestoresbasedatos.pdf', NULL, NULL, 0, 78, '2020-01-05 06:45:45', '2020-01-05 06:45:45'),
-(301, 'Lenguaje DDL y DML', 'Lenguaje DDL, DML, interfaces, modelo de datos', 'HDP115/1578188884HDP115-unidad4-lenguajeDDL-MDL.pdf', NULL, NULL, 0, 78, '2020-01-05 06:48:04', '2020-01-05 06:48:04'),
-(302, 'Relaciones y entidades', NULL, 'HDP115/1578189001HDP115-unidad4-entidades-claves-primaria.pdf', NULL, NULL, 0, 78, '2020-01-05 06:50:01', '2020-01-05 06:50:01'),
-(303, 'Modelo Lógico y relacional', 'Modelo logico, relacional, caracteristicas entre relaciones, estado de una base de datos', 'HDP115/1578189085HDP115-unidad4-modeloLogico-Relacional.pdf', NULL, NULL, 0, 78, '2020-01-05 06:51:25', '2020-01-05 06:51:25'),
-(304, 'Desigualdades', NULL, 'MAT115/1578199599MAT115-desigualdades.pdf', NULL, NULL, 7, 79, '2020-01-05 09:46:39', '2020-01-14 12:06:15'),
-(305, 'Desigualdades 2', NULL, 'MAT115/1578199699MAT115-desigualdades2.pdf', NULL, NULL, 1, 79, '2020-01-05 09:48:19', '2020-01-14 12:06:15'),
-(306, 'Desigualdades 3', NULL, 'MAT115/1578199749MAT115-desigualdades3.pdf', NULL, NULL, 1, 79, '2020-01-05 09:49:09', '2020-01-14 12:06:15'),
+(300, 'Sistemas gestores de bases de datos y más', 'Sistemas gestores de bases de datos', '1578188745HDP115-unidad4-gestoresbasedatos.pdf', NULL, NULL, 0, 78, '2020-01-05 06:45:45', '2020-01-05 06:45:45'),
+(301, 'Lenguaje DDL y DML', 'Lenguaje DDL, DML, interfaces, modelo de datos', '1578188884HDP115-unidad4-lenguajeDDL-MDL.pdf', NULL, NULL, 0, 78, '2020-01-05 06:48:04', '2020-01-05 06:48:04'),
+(302, 'Relaciones y entidades', NULL, '1578189001HDP115-unidad4-entidades-claves-primaria.pdf', NULL, NULL, 0, 78, '2020-01-05 06:50:01', '2020-01-05 06:50:01'),
+(303, 'Modelo Lógico y relacional', 'Modelo logico, relacional, caracteristicas entre relaciones, estado de una base de datos', '1578189085HDP115-unidad4-modeloLogico-Relacional.pdf', NULL, NULL, 0, 78, '2020-01-05 06:51:25', '2020-01-05 06:51:25'),
+(304, 'Desigualdades', NULL, '1578199599MAT115-desigualdades.pdf', NULL, NULL, 7, 79, '2020-01-05 09:46:39', '2020-01-14 12:06:15'),
+(305, 'Desigualdades 2', NULL, '1578199699MAT115-desigualdades2.pdf', NULL, NULL, 1, 79, '2020-01-05 09:48:19', '2020-01-14 12:06:15'),
+(306, 'Desigualdades 3', NULL, '1578199749MAT115-desigualdades3.pdf', NULL, NULL, 1, 79, '2020-01-05 09:49:09', '2020-01-14 12:06:15'),
 (307, 'Desigualdades lineales - Ejercicio 1', 'Explica cómo solucionar una desigualdad o inecuación lineal y cómo expresar su conjunto solución.', NULL, 'https://www.youtube.com/embed/jSZWvCh2PqI', 'https://youtu.be/jSZWvCh2PqI', 2, 79, '2020-01-05 09:51:33', '2020-01-18 10:07:22'),
 (308, 'Desigualdades lineales - Ejercicio 2', 'Explica cómo solucionar una desigualdad o inecuación lineal y cómo expresar su conjunto solución.', NULL, 'https://www.youtube.com/embed/1CmeGrYDgLU', 'https://youtu.be/1CmeGrYDgLU', 0, 79, '2020-01-05 09:52:00', '2020-01-05 09:52:00'),
 (309, 'Desigualdades lineales - Ejercicio 3', 'Explica cómo solucionar una desigualdad o inecuación lineal y cómo expresar su conjunto solución.', NULL, 'https://www.youtube.com/embed/RqbH-Bwe_NY', 'https://youtu.be/RqbH-Bwe_NY', 0, 79, '2020-01-05 09:53:02', '2020-01-05 09:53:02'),
@@ -438,7 +445,7 @@ INSERT INTO `contenidos` (`id`, `titulo`, `descripcion`, `pdf`, `video`, `url`, 
 (362, 'Inecuaciones racionales solución | Ejemplo 6', NULL, NULL, 'https://www.youtube.com/embed/rFd5gY7cim0', 'https://youtu.be/rFd5gY7cim0', 0, 80, '2020-01-05 10:27:32', '2020-01-05 10:27:32'),
 (363, 'Inecuaciones racionales solución | Ejemplo 7', NULL, NULL, 'https://www.youtube.com/embed/tJkkeewcK_s', 'https://youtu.be/tJkkeewcK_s', 0, 80, '2020-01-05 10:27:52', '2020-01-05 10:27:52'),
 (364, 'Inecuaciones racionales solución | Ejemplo 8', NULL, NULL, 'https://www.youtube.com/embed/5yTblZU-TQk', 'https://youtu.be/5yTblZU-TQk', 0, 80, '2020-01-05 10:28:09', '2020-01-05 10:28:09'),
-(365, 'Guía discusión 1 - Desigualdades 2019', NULL, 'MAT115/1578244429MAT115-guiaDiscucion1-2019.pdf', NULL, NULL, 4, 82, '2020-01-05 22:13:49', '2020-01-14 12:14:11'),
+(365, 'Guía discusión 1 - Desigualdades 2019', NULL, '1578244429MAT115-guiaDiscucion1-2019.pdf', NULL, NULL, 4, 82, '2020-01-05 22:13:49', '2020-01-14 12:14:11'),
 (366, '01. ¿Qué es una desigualdad? (Soluciones, intervalos, gráfica, etc)', NULL, NULL, 'https://www.youtube.com/embed/wWqueXXTmeo', 'https://youtu.be/wWqueXXTmeo', 0, 81, '2020-01-05 23:09:26', '2020-01-05 23:09:26'),
 (367, '02. Desigualdades de primer grado, despejar x', NULL, NULL, 'https://www.youtube.com/embed/qBDCNL1opQ8', 'https://youtu.be/qBDCNL1opQ8', 0, 81, '2020-01-05 23:10:12', '2020-01-05 23:10:12'),
 (368, '03. Desigualdades de primer grado, despejar x', NULL, NULL, 'https://www.youtube.com/embed/amQOmwK6kk4', 'https://youtu.be/amQOmwK6kk4', 0, 81, '2020-01-05 23:10:46', '2020-01-05 23:10:46'),
@@ -542,6 +549,17 @@ CREATE TABLE `imagenes` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `imagenes`
+--
+
+INSERT INTO `imagenes` (`id`, `url`, `producto_id`, `created_at`, `updated_at`) VALUES
+(10, 'sIS031XK0uo7LzUnBk-15797558281.jpg', 5, '2020-01-23 11:03:48', '2020-01-23 11:03:48'),
+(11, 'Dvlh18ra4SYKqAORXD-15797558292.jpg', 5, '2020-01-23 11:03:49', '2020-01-23 11:03:49'),
+(12, '2jzW56ep6iKT5YbuLp-15797558293.jpg', 5, '2020-01-23 11:03:49', '2020-01-23 11:03:49'),
+(13, 'aXhS20zI4kZNvTqCBL-1579756644a.jpg', 6, '2020-01-23 11:17:24', '2020-01-23 11:17:24'),
+(14, 'Sszu28IR7TjCXWbAn9-1579756645b.jpg', 6, '2020-01-23 11:17:25', '2020-01-23 11:17:25');
 
 -- --------------------------------------------------------
 
@@ -649,6 +667,14 @@ CREATE TABLE `productos` (
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id`, `titulo`, `precio`, `fecha`, `descripcion`, `whatsapp`, `nombre`, `estado`, `principal`, `created_at`, `updated_at`) VALUES
+(5, 'PANTALLA LED 40\" RCA y Notebook Hp Stream', '200', '23-01-2020', 'PANTALLA LED 40\" RCA y Notebook Hp Stream', '435435345', 'Karla Garcia', 'publicado', 'sIS031XK0uo7LzUnBk-15797558281.jpg', '2020-01-23 11:03:48', '2020-01-23 11:03:49'),
+(6, 'LAPTOP ACER', '145', '23-01-2020', 'VENDO COMO NUEVA MARCA ACER .. Ofrescan', '4345435545', 'Francisco Navas', 'publicado', 'aXhS20zI4kZNvTqCBL-1579756644a.jpg', '2020-01-23 11:17:24', '2020-01-23 11:17:24');
+
 -- --------------------------------------------------------
 
 --
@@ -728,6 +754,24 @@ INSERT INTO `temarios` (`id`, `titulo`, `descripcion`, `unidad_id`, `orden`, `cr
 (81, 'Desigualdades ejercicios resueltos (MateFacil)', 'Curso sobre desigualdades por el canal: MateFacil', 23, 3, '2020-01-05 22:12:35', '2020-01-05 22:12:35'),
 (82, 'RECURSOS VARIOS', 'Recursos como pdf de ayuda, formulas, guías de discusión, etc.', 23, 4, '2020-01-05 22:13:07', '2020-01-05 22:13:07'),
 (83, 'Contenido unidad 5', NULL, 24, 1, '2020-01-11 00:03:36', '2020-01-11 00:03:36');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tutores`
+--
+
+CREATE TABLE `tutores` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(250) NOT NULL,
+  `descripcion` text,
+  `whatsapp` varchar(30) NOT NULL,
+  `carrera_id` int(11) NOT NULL,
+  `materia_id` bigint(20) UNSIGNED NOT NULL,
+  `estado` varchar(30) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -879,6 +923,14 @@ ALTER TABLE `temarios`
   ADD KEY `temarios_unidad_id_foreign` (`unidad_id`);
 
 --
+-- Indices de la tabla `tutores`
+--
+ALTER TABLE `tutores`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `materia_id` (`materia_id`),
+  ADD KEY `carrera_id` (`carrera_id`);
+
+--
 -- Indices de la tabla `unidades`
 --
 ALTER TABLE `unidades`
@@ -899,7 +951,7 @@ ALTER TABLE `carreras`
 -- AUTO_INCREMENT de la tabla `colaboradores`
 --
 ALTER TABLE `colaboradores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `contenidos`
@@ -932,6 +984,12 @@ ALTER TABLE `productos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT de la tabla `tutores`
+--
+ALTER TABLE `tutores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -958,6 +1016,13 @@ ALTER TABLE `materias`
 --
 ALTER TABLE `temarios`
   ADD CONSTRAINT `temarios_ibfk_1` FOREIGN KEY (`unidad_id`) REFERENCES `unidades` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `tutores`
+--
+ALTER TABLE `tutores`
+  ADD CONSTRAINT `tutores_ibfk_1` FOREIGN KEY (`carrera_id`) REFERENCES `carreras` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tutores_ibfk_2` FOREIGN KEY (`materia_id`) REFERENCES `materias` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `unidades`

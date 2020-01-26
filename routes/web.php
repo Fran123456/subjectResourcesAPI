@@ -29,3 +29,4 @@ Route::resource('contenidos','ContenidoController');
 Route::resource('keys','KeyController');
 Route::resource('carreras','CarreraController');
 Route::resource('colaboradores','ColaboradorController');
+Route::resource('tutores','TutorController');

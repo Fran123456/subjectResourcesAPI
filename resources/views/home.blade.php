@@ -44,6 +44,15 @@
               </div>
             </div>
         </div>
+
+        <div class="col-sm-4">
+          <br>
+            <div class="card">
+              <div class="card-body text-center">
+               <a href="{{ route('tutores.index') }}"> <h5 class="card-title"><i class="fas fa-chalkboard fa-2x"></i> Tutores</h5></a>
+              </div>
+            </div>
+        </div>
     </div>
 
     <div class="row justify-content-center">
