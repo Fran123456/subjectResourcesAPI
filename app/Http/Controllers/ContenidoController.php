@@ -124,7 +124,7 @@ class ContenidoController extends Controller
     public function update(Request $request, $id)
     {   $contenido =  Contenido::find($id);
         if($request->oculto == "pdf"){
-            
+
             if($request->file == null){
               //no subiremos nada ni actualizaremos el archivo.
                 Contenido::where('id', $id)
@@ -134,7 +134,7 @@ class ContenidoController extends Controller
                     'temario_id' => $request->temasxd
                 ]);
             }else{
-              
+
               $materia = Materia::find($request->materia);
               Storage::disk('public')->delete('pdf/'.$contenido->pdf);
 
@@ -156,7 +156,7 @@ class ContenidoController extends Controller
                     'url' => $request->url
                   ]);
         }
-       
+
        return redirect()->route('contenidos.show',$contenido->temario_id)->with('edit', 'Contenido editado correctamente');
     }
 
@@ -173,7 +173,7 @@ class ContenidoController extends Controller
         $m = Unidad::find($u->materia_id);
        // $materia = Materia::find($u->materia_id);
         Contenido::destroy($id);
-      
+
 
         Storage::disk('public')->delete('pdf/'.$m->siglas.'/'.$contenidoUnlink->pdf);
         return back()->with('delete', 'Contenido eliminado correctamente');
@@ -188,6 +188,18 @@ class ContenidoController extends Controller
             return Contenido::where('temario_id', $id)->get();
         }else{
           return [];
+        }
+
+    }
+
+
+    public function contenido($id, $key){
+
+        $key = Key::where('llave', $key)->get();
+        if(count($key)>0){
+            return Contenido::find($id);
+        }else{
+            return Contenido::find(0);
         }
 
     }
@@ -219,5 +231,5 @@ class ContenidoController extends Controller
 
     }
 
-    
+
 }

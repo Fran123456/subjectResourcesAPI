@@ -26,9 +26,9 @@ Route::get('likeMateria/{arg}/{key}', 'MateriaController@like_materiaByCarrera')
 Route::get('unidadesByMateria/{id}/{key}', 'UnidadController@unidadesByMateria')->name('unidadesByMateria');
 Route::get('temariosByUnidades/{id}/{key}', 'TemarioController@temariosByUnidades')->name('temariosByUnidades');
 Route::get('contenidos/{id}/{key}', 'ContenidoController@contenidos')->name('contenidos');
+Route::get('contenido/{id}/{key}', 'ContenidoController@contenido')->name('contenido');
+
 Route::get('vistas/{id}/{key}', 'ContenidoController@vistas')->name('vistas');
 
 Route::get('getProductos/{key}', 'ProductoController@obtener_Productos')->name('getProductos');
 Route::get('getPictures/{id}/{key}', 'ProductoController@obtener_imagenes')->name('getPictures');
-
-

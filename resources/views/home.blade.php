@@ -94,6 +94,17 @@
                   <br><strong>id:</strong> El argumento {id}, debe ser el id de del temario.
                   <br><strong>tipo de retorno: json</strong></span></li>
 
+                  <li class="list-group-item"><h5>{{$url}}/contenido/{id}/{key}</h5> <span>Obtiene el contenido (videos y pdf) de una tema por su id
+                    <br><strong>id:</strong> El argumento {id}, debe ser el id del contenido
+                    <br><strong>tipo de retorno: json</strong></span></li>
+
+
+
+
+                  <li class="list-group-item"><h5>{{$url}}/vistas/{id}/{key}</h5> <span>Registro de vista de contenido
+                    <br><strong>id:</strong> El argumento {id}, debe ser el id del contenido
+                    <br><strong>tipo de retorno: json</strong></span></li>
+
 
                   <li class="list-group-item"><h5>{{$url}}/buscarMateriaByCarrera/{id}/{arg}/{key}</h5> <span>Obtiene las materias o materia por busqueda, pero deben pertenecer a una carrera en especifica.
                   <br><strong>id:</strong> El argumento {id}, debe ser el id de de la carrera.
