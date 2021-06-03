@@ -199,7 +199,9 @@ class ContenidoController extends Controller
 
         $key = Key::where('llave', $key)->get();
         if(count($key)>0){
-            return Contenido::find($id);
+            $c= Contenido::find($id);
+            if($c->pdf !=null) $c->pdf = $this->urlPdf($id, $key);
+            return $c;
         }else{
             return Contenido::find(0);
         }
@@ -208,14 +210,8 @@ class ContenidoController extends Controller
 
     public function urlPdf($id, $key){
        $key = Key::where('llave', $key)->get();
-      if(count($key)>0){
-          $c = Contenido::find($id);
-          return url('/').'/pdf/'.$c->temario->unidad->materia->siglas.'/'.$c->pdf;
-      }else{
-        return null;
-          //return Contenido::find(0);
-      }
-
+        $c = Contenido::find($id);
+        return url('/').'/pdf/'.$c->temario->unidad->materia->siglas.'/'.$c->pdf;
     }
 
     public function vistas($id, $key){
