@@ -21,7 +21,7 @@ class ContenidoController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('vistas','contenidos','contenido');
+        $this->middleware('auth')->except('vistas','contenidos','contenido','urlPdf');
     }
 
 
@@ -96,6 +96,8 @@ class ContenidoController extends Controller
         $contenidoPDF = Contenido::where('temario_id', $id)->where('pdf','!=', null)->get();
         return view('contenido.contenido', compact('contenidoVideo','contenidoPDF','temario','unidad','materia','carrera'));
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -201,6 +203,18 @@ class ContenidoController extends Controller
         }else{
             return Contenido::find(0);
         }
+
+    }
+
+    public function urlPdf($id, $key){
+       $key = Key::where('llave', $key)->get();
+      if(count($key)>0){
+          $c = Contenido::find($id);
+          return url('/').'/pdf/'.$c->temario->unidad->materia->siglas.'/'.$c->pdf;
+      }else{
+        return null;
+          //return Contenido::find(0);
+      }
 
     }
 

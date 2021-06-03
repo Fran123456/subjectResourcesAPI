@@ -27,6 +27,8 @@ Route::get('unidadesByMateria/{id}/{key}', 'UnidadController@unidadesByMateria')
 Route::get('temariosByUnidades/{id}/{key}', 'TemarioController@temariosByUnidades')->name('temariosByUnidades');
 Route::get('contenidos/{id}/{key}', 'ContenidoController@contenidos')->name('contenidos');
 Route::get('contenido/{id}/{key}', 'ContenidoController@contenido')->name('contenido');
+Route::get('contenido/pdf/{id}/{key}', 'ContenidoController@urlPdf')->name('contenido-urlPdf');
+
 
 Route::get('vistas/{id}/{key}', 'ContenidoController@vistas')->name('vistas');
 
