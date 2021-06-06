@@ -23,11 +23,15 @@ Route::get('getMaterias/{id}/{key}', 'MateriaController@materiaByCarrera')->name
 Route::get('buscarMateriaByCarrera/{id}/{arg}/{key}', 'MateriaController@like_materiaByCarrera')->name('buscarMateriaByCarrera');
 Route::get('likeMateria/{arg}/{key}', 'MateriaController@like_materiaByCarrera')->name('likeMateria');
 
+
+
 Route::get('unidadesByMateria/{id}/{key}', 'UnidadController@unidadesByMateria')->name('unidadesByMateria');
 Route::get('temariosByUnidades/{id}/{key}', 'TemarioController@temariosByUnidades')->name('temariosByUnidades');
 Route::get('contenidos/{id}/{key}', 'ContenidoController@contenidos')->name('contenidos');
 Route::get('contenido/{id}/{key}', 'ContenidoController@contenido')->name('contenido');
 Route::get('contenido/pdf/{id}/{key}', 'ContenidoController@urlPdf')->name('contenido-urlPdf');
+
+Route::get('contenidos/like/{string}/{key}', 'ContenidoController@contenidosLike')->name('contenidos-link');
 
 
 Route::get('vistas/{id}/{key}', 'ContenidoController@vistas')->name('vistas');

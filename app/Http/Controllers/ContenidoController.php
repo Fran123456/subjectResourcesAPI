@@ -21,7 +21,7 @@ class ContenidoController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('vistas','contenidos','contenido','urlPdf');
+        $this->middleware('auth')->except('vistas','contenidos','contenido','urlPdf','contenidosLike');
     }
 
 
@@ -191,7 +191,18 @@ class ContenidoController extends Controller
         }else{
           return [];
         }
+    }
 
+
+
+    public function contenidosLike($string, $key){
+
+        $key = Key::where('llave', $key)->get();
+        if(count($key)>0){
+            return Contenido::where('titulo','like', '%'.$string.'%')->take(15)->get();
+        }else{
+          return [];
+        }
     }
 
 
